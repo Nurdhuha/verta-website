@@ -1,4 +1,3 @@
-import React from 'react';
 import { TreePine, Activity, Cloud } from 'lucide-react';
 import { impactTilesData } from '../../data/mockData';
 import './ImpactTiles.css';

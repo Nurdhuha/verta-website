@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -45,7 +44,7 @@ const Dashboard = () => {
             <h3>Growth & Carbon Data</h3>
           </div>
           <div className="chart-wrapper">
-            <Line data={growthChartData} options={growthChartOptions} />
+            <Line data={growthChartData as any} options={growthChartOptions as any} />
           </div>
         </div>
 

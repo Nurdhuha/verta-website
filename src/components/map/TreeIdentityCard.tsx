@@ -61,7 +61,7 @@ const TreeIdentityCard: React.FC<TreeIdentityCardProps> = ({ treeId, onClose }) 
               <h4>Growth Trajectory</h4>
             </div>
             <div className="chart-container">
-              <Line data={growthChartData} options={growthChartOptions} />
+              <Line data={growthChartData as any} options={growthChartOptions as any} />
             </div>
           </div>
         </div>
