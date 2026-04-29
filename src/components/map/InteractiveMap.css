@@ -1,0 +1,26 @@
+.custom-tree-marker {
+  background: transparent;
+  border: none;
+}
+
+/* Ensure leaflet controls are styled cleanly */
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.leaflet-control-zoom a {
+  color: var(--text-primary) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+  font-family: var(--font-family) !important;
+}
+
+.leaflet-popup-content {
+  margin: 12px !important;
+  line-height: 1.5 !important;
+  font-size: 0.8rem !important;
+}

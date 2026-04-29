@@ -1,0 +1,133 @@
+:root {
+  /* Premium Tech-Luxury Color Palette */
+  --emerald-green: #00d26a;       /* Vibrant Neon Green */
+  --emerald-green-light: #4ade80; /* Lighter Neon */
+  --emerald-green-dark: #065f46;  /* Deep Forest Green */
+  --emerald-green-bg: rgba(0, 210, 106, 0.1);
+  
+  --slate-grey: #64748b;
+  --slate-grey-dark: #1e293b;
+  --slate-grey-light: #94a3b8;
+  --slate-grey-bg: rgba(248, 250, 252, 0.6);
+  
+  --clean-white: #ffffff;
+  --background-color: #eef2f6; /* Base background for mesh */
+  
+  --danger-red: #ef4444;
+  --warning-yellow: #f59e0b;
+  
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --border-color: rgba(226, 232, 240, 0.8);
+
+  /* Typography */
+  --font-family: 'Plus Jakarta Sans', sans-serif;
+  
+  /* Shadows & Glassmorphism */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.08), 0 2px 6px -2px rgb(0 0 0 / 0.04);
+  --shadow-lg: 0 12px 24px -4px rgb(0 0 0 / 0.1), 0 6px 12px -6px rgb(0 0 0 / 0.05);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+  --glass-backdrop: blur(16px);
+
+  /* Border Radius */
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  /* Premium subtle mesh gradient */
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(152, 100%, 85%, 0.4) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(210, 100%, 95%, 0.6) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(152, 100%, 85%, 0.4) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(210, 100%, 95%, 0.6) 0px, transparent 50%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* Reusable Components */
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: var(--glass-border);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
+}
+
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.card:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateZ(10px) translateY(-5px);
+  box-shadow: -10px 15px 30px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 210, 106, 0.1);
+}
+
+/* Buttons */
+
+.btn-primary {
+  background-color: var(--emerald-green);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--emerald-green-dark);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--slate-grey-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--slate-grey);
+}
