@@ -56,6 +56,14 @@
   box-sizing: border-box;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
 body {
   font-family: var(--font-family);
   font-size: var(--fs-body);
@@ -151,19 +159,43 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Scrollbar */
 
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* Hide Scrollbars Globally */
+* {
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
 }
-::-webkit-scrollbar-track {
-  background: transparent;
+
+*::-webkit-scrollbar {
+  display: none;
 }
-::-webkit-scrollbar-thumb {
-  background: var(--slate-grey-light);
-  border-radius: 4px;
+
+/* Custom Scrollbar for specific containers (e.g. Tables on Mobile) */
+.scrollable-container {
+  overflow-x: auto !important;
+  width: 100%;
+  padding-bottom: 15px; /* More space to ensure visibility */
+  -webkit-overflow-scrolling: touch;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: var(--slate-grey);
+
+@media (max-width: 768px) {
+  /* High-visibility override for mobile */
+  .scrollable-container::-webkit-scrollbar {
+    display: block !important;
+    height: 8px !important;
+  }
+  
+  .scrollable-container::-webkit-scrollbar-track {
+    background: rgba(226, 232, 240, 0.5) !important;
+    border-radius: 10px !important;
+    margin: 0 10px !important;
+  }
+  
+  .scrollable-container::-webkit-scrollbar-thumb {
+    background: var(--emerald-green) !important;
+    border-radius: 10px !important;
+    border: 2px solid white !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  }
 }
 
 /* Chart entrance animation */
@@ -194,7 +226,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --fs-h1: 1.5rem;
+    --fs-h2: 1.25rem;
+    --fs-h3: 1rem;
+    --fs-body: 0.875rem;
+  }
+
   .desktop-only {
     display: none !important;
+  }
+
+  .card, .glass-panel {
+    border-radius: var(--radius-md);
   }
 }

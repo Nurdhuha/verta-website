@@ -257,15 +257,15 @@ export const commonChartOptions = {
 
 export const doughnutChartOptions = {
   maintainAspectRatio: false,
-  cutout: '75%',
-  spacing: 4,
+  cutout: '70%',
+  spacing: 5,
   layout: {
-    padding: 10
+    padding: 5
   },
   animation: {
     animateRotate: true,
     animateScale: true,
-    duration: 2500,
+    duration: 2000,
     easing: 'easeOutQuart' as const,
   },
   plugins: {
@@ -305,11 +305,11 @@ export const barChartOptions = {
   scales: {
     x: {
       grid: { display: false, drawBorder: false },
-      ticks: { font: { family: 'Plus Jakarta Sans', size: 12 }, color: 'var(--slate-grey-light)' }
+      ticks: { font: { family: 'Plus Jakarta Sans', size: 10 }, color: 'var(--slate-grey-light)' }
     },
     y: {
-      grid: { color: 'rgba(226, 232, 240, 0.5)', borderDash: [5, 5], drawBorder: false },
-      ticks: { font: { family: 'Plus Jakarta Sans', size: 12 }, color: 'var(--slate-grey-light)', padding: 10 }
+      grid: { color: 'rgba(226, 232, 240, 0.4)', borderDash: [5, 5], drawBorder: false },
+      ticks: { font: { family: 'Plus Jakarta Sans', size: 10 }, color: 'var(--slate-grey-light)', padding: 8 }
     }
   }
 };
@@ -322,32 +322,18 @@ export const growthChartOptions = {
     intersect: false,
   },
   animation: {
-    duration: 1800,
+    duration: 1500,
     easing: 'easeOutQuart' as const,
-  },
-  animations: {
-    y: {
-      from: 0,
-      duration: 1800,
-      easing: 'easeOutQuart' as const,
-    }
-  },
-  transitions: {
-    active: {
-      animation: {
-        duration: 200,
-      }
-    }
   },
   plugins: {
     legend: {
       position: 'top' as const,
-      align: 'end' as const,
+      align: 'center' as const,
       labels: {
         usePointStyle: true,
         boxWidth: 6,
-        padding: 20,
-        font: { family: 'Plus Jakarta Sans', size: 12, weight: '500' },
+        padding: 15,
+        font: { family: 'Plus Jakarta Sans', size: 10, weight: '500' },
         color: 'var(--text-secondary)'
       },
     },
@@ -358,31 +344,28 @@ export const growthChartOptions = {
       padding: 12,
       cornerRadius: 8,
       displayColors: false,
-      callbacks: {
-        label: (context: any) => `${context.dataset.label}: ${context.parsed.y.toLocaleString()}`
-      }
     }
   },
   scales: {
     x: {
       grid: { display: false, drawBorder: false },
       ticks: {
-        font: { family: 'Plus Jakarta Sans', size: 11 },
+        font: { family: 'Plus Jakarta Sans', size: 10 },
         color: 'var(--slate-grey-light)',
-        padding: 10,
+        padding: 8,
       }
     },
     y: {
       display: true,
       grid: {
-        color: 'rgba(226, 232, 240, 0.3)',
+        color: 'rgba(226, 232, 240, 0.2)',
         drawBorder: false,
         borderDash: [5, 5],
       },
       ticks: {
-        font: { family: 'Plus Jakarta Sans', size: 11 },
+        font: { family: 'Plus Jakarta Sans', size: 10 },
         color: 'var(--slate-grey-light)',
-        padding: 10,
+        padding: 8,
         callback: (value: any) => value >= 1000 ? (value/1000) + 'k' : value
       },
     },

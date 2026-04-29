@@ -25,9 +25,9 @@ import {
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, PointElement, LineElement, Filler, Title);
 
 const pageVariants = {
-  initial: { opacity: 0, x: -20 },
-  in: { opacity: 1, x: 0 },
-  out: { opacity: 0, x: 20 }
+  initial: { opacity: 0, y: 10 },
+  in: { opacity: 1, y: 0 },
+  out: { opacity: 0, y: -10 }
 };
 
 const pageTransition = {
@@ -46,15 +46,15 @@ const Analytics = () => {
       variants={pageVariants}
       transition={pageTransition}
     >
-      <div className="dashboard-header" style={{ marginBottom: '1.5rem' }}>
+      <div className="dashboard-header">
         <div>
           <h1>Deep Analytics</h1>
           <p className="text-secondary">Comprehensive breakdown of all regions and metrics.</p>
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
-        <div className="card glass-panel" style={{ padding: '1.5rem', minHeight: '450px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div className="dashboard-grid analytics-grid">
+        <div className="card glass-panel" style={{ minHeight: '450px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <h3 style={{ alignSelf: 'flex-start', marginBottom: '1.5rem' }}>Overall Tree Health</h3>
           <div className="chart-animate-in" style={{ position: 'relative', width: '100%', height: '260px', display: 'flex', justifyContent: 'center', marginBottom: '1.5rem', paddingTop: '1.5rem' }}>
             <Doughnut 
@@ -78,18 +78,18 @@ const Analytics = () => {
           </div>
         </div>
 
-        <div className="card glass-panel" style={{ padding: '1.5rem', minHeight: '450px', display: 'flex', flexDirection: 'column' }}>
-          <h3 style={{ marginBottom: '1rem' }}>Carbon by Region</h3>
+        <div className="card glass-panel" style={{ minHeight: '450px', display: 'flex', flexDirection: 'column' }}>
+          <h3 style={{ marginBottom: '1.5rem' }}>Carbon by Region</h3>
           <div style={{ flex: 1, position: 'relative', minHeight: '300px' }}>
             <Bar data={regionData} options={barChartOptions as any} />
           </div>
         </div>
-      </div>
 
-      <div className="card glass-panel" style={{ padding: '1.5rem' }}>
-        <h3 style={{ marginBottom: '1.5rem' }}>Tree Growth by Zones (Height Progress)</h3>
-        <div style={{ height: '350px' }}>
-          <Line data={zoneGrowthData} options={growthChartOptions as any} />
+        <div className="card glass-panel analytics-line-card" style={{ gridColumn: 'span 2' }}>
+          <h3 style={{ marginBottom: '2rem' }}>Tree Growth by Zones (Height Progress)</h3>
+          <div style={{ height: '400px' }}>
+            <Line data={zoneGrowthData} options={growthChartOptions as any} />
+          </div>
         </div>
       </div>
     </motion.div>

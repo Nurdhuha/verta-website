@@ -2,12 +2,6 @@ import { TreePine, Activity, Cloud } from 'lucide-react';
 import { impactTilesData } from '../../data/mockData';
 import './ImpactTiles.css';
 
-const iconMap = {
-  TreePine: <TreePine size={24} color="var(--emerald-green)" />,
-  Activity: <Activity size={24} color="var(--emerald-green)" />,
-  Cloud: <Cloud size={24} color="var(--emerald-green)" />,
-};
-
 const ImpactTiles = () => {
   return (
     <div className="impact-tiles-container">
@@ -15,16 +9,18 @@ const ImpactTiles = () => {
         <div key={index} className="impact-tile card">
           <div className="tile-header">
             <div className="tile-icon-wrapper">
-              {iconMap[tile.iconName]}
+              {tile.iconName === 'TreePine' && <TreePine size={20} color="#00d26a" />}
+              {tile.iconName === 'Activity' && <Activity size={20} color="#00d26a" />}
+              {tile.iconName === 'Cloud' && <Cloud size={20} color="#00d26a" />}
             </div>
             <span className={`trend ${tile.trendPositive ? 'positive' : 'negative'}`}>
               {tile.trend}
             </span>
           </div>
           <div className="tile-body">
-            <p className="tile-title">{tile.title}</p>
-            <h2 className="tile-value">{tile.value}</h2>
-            <p className="tile-subtitle">{tile.subtitle}</p>
+            <p className="tile-title" style={{ color: '#64748b' }}>{tile.title}</p>
+            <h2 className="tile-value" style={{ color: '#0f172a' }}>{tile.value}</h2>
+            <p className="tile-subtitle" style={{ color: '#94a3b8' }}>{tile.subtitle}</p>
           </div>
         </div>
       ))}

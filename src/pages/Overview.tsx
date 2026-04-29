@@ -32,9 +32,9 @@ ChartJS.register(
 // Page transitions configuration
 
 const pageVariants = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 10 },
   in: { opacity: 1, y: 0 },
-  out: { opacity: 0, y: -20 }
+  out: { opacity: 0, y: -10 }
 };
 
 const pageTransition = {
@@ -55,8 +55,8 @@ const Overview = () => {
     >
       <div className="dashboard-header">
         <div>
-          <h1>Executive Summary</h1>
-          <p className="text-secondary">Overview of your VERTA environmental impact.</p>
+          <h1 style={{ fontSize: 'var(--fs-h1)' }}>Executive Summary</h1>
+          <p className="text-secondary" style={{ fontSize: 'var(--fs-sm)' }}>Overview of environmental impact.</p>
         </div>
         <div className="header-stats desktop-only" style={{ display: 'flex', gap: '1rem' }}>
           <div className="glass-panel" style={{ padding: '0.5rem 1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(0, 210, 106, 0.2)' }}>
