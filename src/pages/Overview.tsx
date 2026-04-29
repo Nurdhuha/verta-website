@@ -55,7 +55,7 @@ const Overview = () => {
     >
       <div className="dashboard-header">
         <div>
-          <h1 style={{ fontSize: 'var(--fs-h1)' }}>Executive Summary</h1>
+          <h1>Executive Summary</h1>
           <p className="text-secondary" style={{ fontSize: 'var(--fs-sm)' }}>Overview of environmental impact.</p>
         </div>
         <div className="header-stats desktop-only" style={{ display: 'flex', gap: '1rem' }}>

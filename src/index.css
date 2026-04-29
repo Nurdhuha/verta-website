@@ -181,20 +181,18 @@ h1, h2, h3, h4, h5, h6 {
   /* High-visibility override for mobile */
   .scrollable-container::-webkit-scrollbar {
     display: block !important;
-    height: 8px !important;
+    height: 6px !important; /* Slightly thinner but more precise */
   }
   
   .scrollable-container::-webkit-scrollbar-track {
-    background: rgba(226, 232, 240, 0.5) !important;
+    background: rgba(0, 0, 0, 0.03) !important;
     border-radius: 10px !important;
-    margin: 0 10px !important;
   }
   
   .scrollable-container::-webkit-scrollbar-thumb {
     background: var(--emerald-green) !important;
     border-radius: 10px !important;
-    border: 2px solid white !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid white !important;
   }
 }
 
