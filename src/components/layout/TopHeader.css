@@ -83,11 +83,29 @@
   }
 
   .user-info {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .user-name {
+    font-size: 11px !important;
+    line-height: 1.2;
+  }
+  
+  .user-role {
+    font-size: 9px !important;
+    line-height: 1;
+  }
+  
+  .user-profile img {
+    width: 28px !important;
+    height: 28px !important;
   }
   
   .user-profile {
     padding-left: 8px;
+    gap: 6px !important;
     border-left: none;
   }
 }
