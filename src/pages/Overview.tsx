@@ -56,12 +56,12 @@ const Overview = () => {
       <div className="dashboard-header">
         <div>
           <h1>Executive Summary</h1>
-          <p className="text-secondary" style={{ fontSize: 'var(--fs-sm)' }}>Overview of environmental impact.</p>
+          <p className="text-secondary" style={{ fontSize: '14px' }}>Overview of environmental impact.</p>
         </div>
-        <div className="header-stats desktop-only" style={{ display: 'flex', gap: '1rem' }}>
-          <div className="glass-panel" style={{ padding: '0.5rem 1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(0, 210, 106, 0.2)' }}>
+        <div className="header-stats desktop-only" style={{ display: 'flex', gap: '16px' }}>
+          <div className="glass-panel" style={{ padding: '8px 16px', display: 'flex', alignItems: 'center', gap: '8px', border: '1px solid rgba(0, 210, 106, 0.2)' }}>
             <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#00d26a', boxShadow: '0 0 10px #00d26a' }}></div>
-            <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-semibold)' }}>83% of 2026 Goal Reached</span>
+            <span style={{ fontSize: '14px', fontWeight: 'var(--fw-semibold)' }}>83% of 2026 Goal Reached</span>
           </div>
         </div>
       </div>

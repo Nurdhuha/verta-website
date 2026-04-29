@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
+  padding: 0 32px;
   position: sticky;
   top: 0;
   z-index: 50;
@@ -17,7 +17,7 @@
 .search-bar-wrapper {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 }
 
 .menu-toggle-btn {
@@ -25,7 +25,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 8px;
   border-radius: var(--radius-sm);
   transition: background-color 0.2s;
 }
@@ -37,9 +37,9 @@
 .search-bar {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
   background-color: var(--slate-grey-bg);
-  padding: 0.5rem 1rem;
+  padding: 8px 16px;
   border-radius: var(--radius-md);
   width: 300px;
   border: 1px solid var(--border-color);
@@ -60,12 +60,12 @@
 
 @media (max-width: 768px) {
   .top-header {
-    padding: 0 0.75rem;
+    padding: 0 12px;
     height: 56px;
   }
   
   .header-actions {
-    gap: 0.75rem;
+    gap: 12px;
   }
   
   .menu-toggle-btn {
@@ -87,7 +87,7 @@
   }
   
   .user-profile {
-    padding-left: 0.5rem;
+    padding-left: 8px;
     border-left: none;
   }
 }
@@ -95,13 +95,13 @@
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 24px;
 }
 
 .notification-btn {
   position: relative;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 8px;
   border-radius: 50%;
   transition: background-color 0.2s ease;
 }
@@ -116,7 +116,7 @@
   right: 2px;
   background-color: var(--danger-red);
   color: white;
-  font-size: 0.6rem;
+  font-size: 10px;
   font-weight: bold;
   height: 16px;
   width: 16px;
@@ -130,9 +130,9 @@
 .user-profile {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 12px;
   cursor: pointer;
-  padding-left: 1.5rem;
+  padding-left: 24px;
   border-left: 1px solid var(--border-color);
 }
 

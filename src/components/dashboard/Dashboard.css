@@ -1,8 +1,8 @@
 .dashboard-container {
-  padding: 2rem 2.5rem;
+  padding: 32px 40px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 32px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -18,7 +18,7 @@
               box-shadow 0.3s ease,
               border-color 0.3s ease;
   border-radius: 20px; 
-  padding: 1.5rem; /* Centralized padding for all cards */
+  padding: 24px; /* Centralized padding for all cards */
 }
 
 .card.glass-panel:hover {
@@ -31,14 +31,14 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
 }
 
 .dashboard-header h1 {
-  font-size: 2.25rem;
+  font-size: 36px;
   font-weight: var(--fw-bold);
   letter-spacing: -0.04em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
   color: var(--text-primary);
   line-height: 1.1;
 }
@@ -52,7 +52,7 @@
 .dashboard-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 2rem;
+  gap: 32px;
   width: 100%;
 }
 
@@ -66,7 +66,7 @@
 }
 
 .section-header {
-  padding: 1.25rem 1.75rem;
+  padding: 20px 28px;
   border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
@@ -80,7 +80,7 @@
 }
 
 .chart-wrapper {
-  padding: 1.5rem;
+  padding: 24px;
   height: 400px; /* Reduced from 450px to eliminate white space */
   width: 100%;
   position: relative;
@@ -106,8 +106,8 @@
 
 @media (max-width: 768px) {
   .dashboard-container {
-    padding: 1.25rem 1rem;
-    gap: 1.5rem;
+    padding: 20px 16px;
+    gap: 24px;
     width: 100%;
     overflow-x: hidden;
     align-items: stretch; 
@@ -116,7 +116,7 @@
   .dashboard-grid {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 24px;
     min-height: auto !important;
   }
 
@@ -129,17 +129,17 @@
   .dashboard-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 16px;
+    margin-bottom: 24px;
   }
 
   .chart-wrapper {
     height: 320px;
-    padding: 0.75rem 0.5rem;
-    margin-top: 0.5rem;
+    padding: 12px 8px;
+    margin-top: 8px;
   }
 
   .section-header {
-    padding: 1rem 1.25rem;
+    padding: 16px 20px;
   }
 }

@@ -1,15 +1,15 @@
 .impact-tiles-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 0.5rem;
+  gap: 24px;
+  margin-bottom: 8px;
 }
 
 .impact-tile {
-  padding: 1.5rem;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 20px;
   min-height: 180px;
   justify-content: space-between;
 }
@@ -33,7 +33,7 @@
 .trend {
   font-size: var(--fs-xs);
   font-weight: var(--fw-bold);
-  padding: 0.35rem 0.65rem;
+  padding: 6px 10px;
   border-radius: 8px;
   letter-spacing: -0.01em;
 }
@@ -57,11 +57,11 @@
   font-size: var(--fs-sm);
   color: var(--slate-grey);
   font-weight: var(--fw-semibold);
-  margin-bottom: 0.25rem;
+  margin-bottom: 4px;
 }
 
 .tile-value {
-  font-size: 2.25rem;
+  font-size: 36px;
   font-weight: var(--fw-bold);
   color: var(--text-primary);
   line-height: 1.1;
@@ -71,7 +71,7 @@
 .tile-subtitle {
   font-size: var(--fs-xs);
   color: var(--slate-grey-light);
-  margin-top: 0.4rem;
+  margin-top: 6px;
   font-weight: var(--fw-medium);
 }
 
@@ -83,10 +83,10 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    padding: 0.5rem 1.25rem 1.5rem 1.25rem;
-    margin: 0 -1rem; 
-    gap: 1.25rem;
-    width: calc(100% + 2rem);
+    padding: 8px 20px 24px 20px;
+    margin: 0 -16px; 
+    gap: 20px;
+    width: calc(100% + 32px);
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     position: relative;
@@ -106,7 +106,7 @@
     background: #ffffff !important;
     border: 1px solid var(--border-color) !important;
     border-radius: 20px !important; /* Slightly more rounded */
-    padding: 1.75rem !important; /* More breathing room */
+    padding: 28px !important; /* More breathing room */
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
@@ -126,19 +126,19 @@
 
   .tile-title {
     color: #475569 !important;
-    font-size: 0.9375rem !important;
+    font-size: 15px !important;
     font-weight: 600 !important;
   }
 
   .tile-value {
-    font-size: 2.25rem !important; /* Increased from 2rem */
+    font-size: 36px !important; /* Increased from 2rem */
     color: #0f172a !important;
-    margin: 0.4rem 0 !important;
+    margin: 6px 0 !important;
     font-weight: 800 !important;
   }
 
   .tile-subtitle {
     color: #94a3b8 !important;
-    font-size: 0.8125rem !important;
+    font-size: 13px !important;
   }
 }

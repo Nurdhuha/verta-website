@@ -55,16 +55,16 @@ const Analytics = () => {
 
       <div className="dashboard-grid analytics-grid">
         <div className="card glass-panel" style={{ minHeight: '450px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <h3 style={{ alignSelf: 'flex-start', marginBottom: '1.5rem' }}>Overall Tree Health</h3>
-          <div className="chart-animate-in" style={{ position: 'relative', width: '100%', height: '260px', display: 'flex', justifyContent: 'center', marginBottom: '1.5rem', paddingTop: '1.5rem' }}>
+          <h3 style={{ alignSelf: 'flex-start', marginBottom: '24px' }}>Overall Tree Health</h3>
+          <div className="chart-animate-in" style={{ position: 'relative', width: '100%', height: '260px', display: 'flex', justifyContent: 'center', marginBottom: '24px', paddingTop: '24px' }}>
             <Doughnut 
               data={healthData} 
               options={doughnutChartOptions as any} 
             />
           </div>
-          <div style={{ display: 'flex', gap: '1.5rem', width: '100%', justifyContent: 'center', flexWrap: 'wrap', marginTop: 'auto' }}>
+          <div style={{ display: 'flex', gap: '24px', width: '100%', justifyContent: 'center', flexWrap: 'wrap', marginTop: 'auto' }}>
             {healthData.labels.map((label, i) => (
-              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <div style={{ 
                   width: '10px', 
                   height: '10px', 
@@ -79,14 +79,14 @@ const Analytics = () => {
         </div>
 
         <div className="card glass-panel" style={{ minHeight: '450px', display: 'flex', flexDirection: 'column' }}>
-          <h3 style={{ marginBottom: '1.5rem' }}>Carbon by Region</h3>
+          <h3 style={{ marginBottom: '24px' }}>Carbon by Region</h3>
           <div style={{ flex: 1, position: 'relative', minHeight: '300px' }}>
             <Bar data={regionData} options={barChartOptions as any} />
           </div>
         </div>
 
         <div className="card glass-panel analytics-line-card" style={{ gridColumn: 'span 2' }}>
-          <h3 style={{ marginBottom: '2rem' }}>Tree Growth by Zones (Height Progress)</h3>
+          <h3 style={{ marginBottom: '32px' }}>Tree Growth by Zones (Height Progress)</h3>
           <div style={{ height: '400px' }}>
             <Line data={zoneGrowthData} options={growthChartOptions as any} />
           </div>
