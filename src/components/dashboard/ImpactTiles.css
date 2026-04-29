@@ -2,13 +2,16 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .impact-tile {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
+  min-height: 180px;
+  justify-content: space-between;
 }
 
 .tile-header {
@@ -18,8 +21,8 @@
 }
 
 .tile-icon-wrapper {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   background-color: var(--emerald-green-bg);
   border-radius: 12px;
   display: flex;
@@ -29,14 +32,20 @@
 
 .trend {
   font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
-  padding: 0.25rem 0.5rem;
-  border-radius: 1rem;
+  font-weight: var(--fw-bold);
+  padding: 0.35rem 0.65rem;
+  border-radius: 8px;
+  letter-spacing: -0.01em;
 }
 
 .trend.positive {
   background-color: #dcfce7;
-  color: #166534;
+  color: #15803d;
+}
+
+.trend.negative {
+  background-color: #fee2e2;
+  color: #b91c1c;
 }
 
 .tile-body {
@@ -47,19 +56,46 @@
 .tile-title {
   font-size: var(--fs-sm);
   color: var(--slate-grey);
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-semibold);
   margin-bottom: 0.25rem;
 }
 
 .tile-value {
-  font-size: 2rem; /* Keep value large for impact */
+  font-size: 2.25rem;
   font-weight: var(--fw-bold);
   color: var(--text-primary);
-  line-height: var(--lh-tight);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
 }
 
 .tile-subtitle {
   font-size: var(--fs-xs);
   color: var(--slate-grey-light);
-  margin-top: 0.25rem;
+  margin-top: 0.4rem;
+  font-weight: var(--fw-medium);
+}
+
+/* Mobile Horizontal Scroll Implementation */
+@media (max-width: 850px) {
+  .impact-tiles-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 0.5rem 0 1.5rem 0;
+    margin-left: 0;
+    margin-right: 0;
+    gap: 1rem;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+  }
+
+  .impact-tiles-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+  }
+
+  .impact-tile {
+    flex: 0 0 280px;
+    scroll-snap-align: center;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  }
 }

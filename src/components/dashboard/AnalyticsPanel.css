@@ -189,3 +189,27 @@
   width: fit-content;
   margin-top: 0.25rem;
 }
+
+@media (max-width: 600px) {
+  .activity-time-left {
+    width: 45px;
+    font-size: 10px;
+  }
+  
+  .timeline-connector {
+    left: 60px;
+  }
+  
+  .activity-icon-node {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .activity-user {
+    font-size: var(--fs-xs);
+  }
+  
+  .activity-action {
+    font-size: var(--fs-sm);
+  }
+}
