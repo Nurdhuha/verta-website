@@ -95,27 +95,36 @@ export const zoneInsightsData: ZoneInsight[] = [
 
 // === Planting Data (Overview) ===
 
+// === Planting Data (Overview) ===
+
 export const plantingChartData = {
   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   datasets: [
     {
       type: 'line' as const,
-      label: 'Cumulative Trees',
+      label: 'Trees Planted',
       data: [800, 1500, 2400, 3200, 4100, 5000, 6200, 7500, 8800, 10000, 11200, 12450],
       borderColor: '#00d26a',
-      backgroundColor: 'rgba(0, 210, 106, 0.1)',
+      backgroundColor: 'rgba(0, 210, 106, 0.12)',
       fill: true,
-      tension: 0.4,
+      tension: 0.45,
       borderWidth: 3,
-      pointRadius: 4,
-      pointBackgroundColor: '#00d26a',
+      pointRadius: 0,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: '#00d26a',
+      pointHoverBorderColor: '#fff',
+      pointHoverBorderWidth: 2,
+      yAxisID: 'y',
     },
     {
       type: 'bar' as const,
-      label: 'Monthly Target',
-      data: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000],
-      backgroundColor: 'rgba(148, 163, 184, 0.2)',
+      label: 'Carbon Offset',
+      data: [150, 400, 1100, 1900, 2500, 2850, 3100, 3400, 3800, 4200, 4600, 5000],
+      backgroundColor: 'rgba(0, 210, 106, 0.1)',
+      hoverBackgroundColor: 'rgba(0, 210, 106, 0.2)',
       borderRadius: 4,
+      barThickness: 12,
+      yAxisID: 'y1',
     }
   ],
 };
@@ -129,31 +138,181 @@ export const zoneGrowthData = {
       label: 'North Zone',
       data: [10, 25, 45, 70, 95],
       borderColor: '#00d26a',
+      backgroundColor: '#00d26a',
       tension: 0.4,
+      borderWidth: 2.5,
+      pointRadius: 4,
+      pointHoverRadius: 6,
+      fill: false,
     },
     {
       label: 'East Zone',
       data: [8, 20, 38, 62, 88],
       borderColor: '#f59e0b',
+      backgroundColor: '#f59e0b',
       tension: 0.4,
+      borderWidth: 2.5,
+      pointRadius: 4,
+      pointHoverRadius: 6,
+      fill: false,
     },
     {
       label: 'South Zone',
       data: [12, 28, 52, 78, 105],
       borderColor: '#3b82f6',
+      backgroundColor: '#3b82f6',
       tension: 0.4,
+      borderWidth: 2.5,
+      pointRadius: 4,
+      pointHoverRadius: 6,
+      fill: false,
     },
     {
       label: 'West Zone',
       data: [9, 22, 42, 68, 92],
       borderColor: '#8b5cf6',
+      backgroundColor: '#8b5cf6',
       tension: 0.4,
+      borderWidth: 2.5,
+      pointRadius: 4,
+      pointHoverRadius: 6,
+      fill: false,
     },
   ],
 };
 
 // Backward compatibility or for specific use cases
 export const growthChartData = plantingChartData;
+
+// === Analytics Page Specific Data ===
+
+export const healthData = {
+  labels: ['Healthy', 'Needs Attention', 'Dead'],
+  datasets: [
+    {
+      label: '# of Trees',
+      data: [11500, 800, 150],
+      backgroundColor: [
+        'rgba(0, 210, 106, 0.9)',
+        'rgba(245, 158, 11, 0.9)',
+        'rgba(239, 68, 68, 0.9)',
+      ],
+      hoverBackgroundColor: [
+        'rgba(0, 210, 106, 1)',
+        'rgba(245, 158, 11, 1)',
+        'rgba(239, 68, 68, 1)',
+      ],
+      borderWidth: 0,
+      hoverOffset: 8,
+    },
+  ],
+};
+
+export const regionData = {
+  labels: ['North Zone', 'East Zone', 'South Zone', 'West Zone'],
+  datasets: [
+    {
+      label: 'Carbon Sequestered (Tons)',
+      data: [650, 420, 980, 800],
+      backgroundColor: 'rgba(0, 210, 106, 0.85)',
+      hoverBackgroundColor: 'rgba(0, 210, 106, 1)',
+      borderRadius: 8,
+      borderSkipped: false,
+    },
+  ],
+};
+
+export const commonChartOptions = {
+  maintainAspectRatio: false,
+  cutout: '75%',
+  spacing: 4,
+  layout: {
+    padding: 10
+  },
+  animation: {
+    animateRotate: true,
+    animateScale: true,
+    duration: 2000,
+    easing: 'easeOutQuart' as const,
+  },
+  plugins: {
+    legend: {
+      position: 'bottom' as const,
+      labels: {
+        usePointStyle: true,
+        padding: 20,
+        font: { family: 'Plus Jakarta Sans', size: 12, weight: '500' },
+        color: 'var(--text-secondary)'
+      }
+    },
+    tooltip: {
+      backgroundColor: 'rgba(15, 23, 42, 0.9)',
+      titleFont: { family: 'Plus Jakarta Sans', size: 13, weight: '600' },
+      bodyFont: { family: 'Plus Jakarta Sans', size: 12 },
+      padding: 12,
+      cornerRadius: 8,
+    }
+  }
+};
+
+export const doughnutChartOptions = {
+  maintainAspectRatio: false,
+  cutout: '75%',
+  spacing: 4,
+  layout: {
+    padding: 10
+  },
+  animation: {
+    animateRotate: true,
+    animateScale: true,
+    duration: 2500,
+    easing: 'easeOutQuart' as const,
+  },
+  plugins: {
+    legend: { display: false },
+    tooltip: {
+      backgroundColor: 'rgba(15, 23, 42, 0.9)',
+      titleFont: { family: 'Plus Jakarta Sans', size: 13, weight: '600' },
+      bodyFont: { family: 'Plus Jakarta Sans', size: 12 },
+      padding: 12,
+      cornerRadius: 8,
+    }
+  }
+};
+
+export const barChartOptions = {
+  ...commonChartOptions,
+  maintainAspectRatio: false,
+  animation: {
+    duration: 1500,
+    easing: 'easeOutQuart' as const,
+  },
+  animations: {
+    y: {
+      from: (ctx: any) => {
+        if (ctx.type === 'data') {
+          return ctx.chart.scales.y?.getPixelForValue(0) || ctx.chart.height;
+        }
+      },
+      duration: 1500,
+      easing: 'easeOutQuart' as const,
+    }
+  },
+  plugins: {
+    ...commonChartOptions.plugins,
+    legend: { display: false }
+  },
+  scales: {
+    x: {
+      grid: { display: false, drawBorder: false },
+      ticks: { font: { family: 'Plus Jakarta Sans', size: 12 }, color: 'var(--slate-grey-light)' }
+    },
+    y: {
+      grid: { color: 'rgba(226, 232, 240, 0.5)', borderDash: [5, 5], drawBorder: false },
+      ticks: { font: { family: 'Plus Jakarta Sans', size: 12 }, color: 'var(--slate-grey-light)', padding: 10 }
+    }
+  }
+};
 
 export const growthChartOptions = {
   responsive: true,
@@ -162,20 +321,33 @@ export const growthChartOptions = {
     mode: 'index' as const,
     intersect: false,
   },
-  stacked: false,
+  animation: {
+    duration: 1800,
+    easing: 'easeOutQuart' as const,
+  },
+  animations: {
+    y: {
+      from: 0,
+      duration: 1800,
+      easing: 'easeOutQuart' as const,
+    }
+  },
+  transitions: {
+    active: {
+      animation: {
+        duration: 200,
+      }
+    }
+  },
   plugins: {
     legend: {
       position: 'top' as const,
       align: 'end' as const,
       labels: {
         usePointStyle: true,
-        boxWidth: 8,
+        boxWidth: 6,
         padding: 20,
-        font: {
-          family: 'Plus Jakarta Sans',
-          size: 13,
-          weight: '500',
-        },
+        font: { family: 'Plus Jakarta Sans', size: 12, weight: '500' },
         color: 'var(--text-secondary)'
       },
     },
@@ -185,48 +357,38 @@ export const growthChartOptions = {
       bodyFont: { family: 'Plus Jakarta Sans', size: 12 },
       padding: 12,
       cornerRadius: 8,
-      displayColors: true,
+      displayColors: false,
+      callbacks: {
+        label: (context: any) => `${context.dataset.label}: ${context.parsed.y.toLocaleString()}`
+      }
     }
   },
   scales: {
     x: {
-      grid: {
-        display: false,
-        drawBorder: false,
-      },
+      grid: { display: false, drawBorder: false },
       ticks: {
-        font: { family: 'Plus Jakarta Sans', size: 12 },
-        color: 'var(--slate-grey-light)'
+        font: { family: 'Plus Jakarta Sans', size: 11 },
+        color: 'var(--slate-grey-light)',
+        padding: 10,
       }
     },
     y: {
-      type: 'linear' as const,
       display: true,
-      position: 'left' as const,
       grid: {
-        color: 'rgba(226, 232, 240, 0.5)',
+        color: 'rgba(226, 232, 240, 0.3)',
         drawBorder: false,
         borderDash: [5, 5],
       },
       ticks: {
-        font: { family: 'Plus Jakarta Sans', size: 12 },
+        font: { family: 'Plus Jakarta Sans', size: 11 },
         color: 'var(--slate-grey-light)',
         padding: 10,
+        callback: (value: any) => value >= 1000 ? (value/1000) + 'k' : value
       },
     },
     y1: {
-      type: 'linear' as const,
-      display: true,
-      position: 'right' as const,
-      grid: {
-        display: false,
-        drawBorder: false,
-      },
-      ticks: {
-        font: { family: 'Plus Jakarta Sans', size: 12 },
-        color: 'var(--slate-grey-light)',
-        padding: 10,
-      },
-    },
+      display: false,
+      grid: { display: false },
+    }
   },
 };

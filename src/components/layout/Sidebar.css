@@ -71,10 +71,10 @@
 }
 
 .sidebar-logo h2 {
-  font-size: 1.5rem;
+  font-size: var(--fs-h2);
   letter-spacing: 1px;
   color: var(--emerald-green-dark);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 
 .sidebar-nav {
@@ -94,8 +94,8 @@
 }
 
 .nav-label {
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
   color: var(--slate-grey-light);
   margin-bottom: 0.75rem;
   letter-spacing: 0.05em;
@@ -119,7 +119,8 @@
   padding: 0.75rem 1rem;
   border-radius: var(--radius-md);
   color: var(--slate-grey);
-  font-weight: 500;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-medium);
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
@@ -134,7 +135,7 @@
 .sidebar-nav li a.active {
   background-color: var(--emerald-green-bg);
   color: var(--emerald-green);
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
 }
 
 .logout-btn {

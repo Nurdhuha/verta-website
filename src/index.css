@@ -20,9 +20,22 @@
   --text-secondary: #475569;
   --border-color: rgba(226, 232, 240, 0.8);
 
-  /* Typography */
+  /* Typography System */
   --font-family: 'Plus Jakarta Sans', sans-serif;
+  --fs-h1: 1.875rem;     /* 30px - Page Titles */
+  --fs-h2: 1.5rem;      /* 24px - Large Section Titles */
+  --fs-h3: 1.125rem;    /* 18px - Card Titles */
+  --fs-body: 0.9375rem; /* 15px - Main Content */
+  --fs-sm: 0.8125rem;   /* 13px - Secondary Info */
+  --fs-xs: 0.75rem;     /* 12px - Labels/Captions */
   
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  
+  --lh-tight: 1.2;
+  --lh-base: 1.6;
+
   /* Shadows & Glassmorphism */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.08), 0 2px 6px -2px rgb(0 0 0 / 0.04);
@@ -45,6 +58,8 @@
 
 body {
   font-family: var(--font-family);
+  font-size: var(--fs-body);
+  line-height: var(--lh-base);
   background-color: var(--background-color);
   /* Premium subtle mesh gradient */
   background-image: 
@@ -54,12 +69,31 @@ body {
     radial-gradient(at 0% 100%, hsla(210, 100%, 95%, 0.6) 0px, transparent 50%);
   background-attachment: fixed;
   color: var(--text-primary);
-  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
+h1 {
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-tight);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-tight);
+}
+
+p.text-secondary {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   color: var(--text-primary);
   letter-spacing: -0.02em;
 }
@@ -130,4 +164,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--slate-grey);
+}
+
+/* Chart entrance animation */
+@keyframes chartScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-90deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.chart-animate-in {
+  animation: chartScaleIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both;
 }

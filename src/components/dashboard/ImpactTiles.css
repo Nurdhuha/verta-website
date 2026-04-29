@@ -28,8 +28,8 @@
 }
 
 .trend {
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
   padding: 0.25rem 0.5rem;
   border-radius: 1rem;
 }
@@ -45,20 +45,21 @@
 }
 
 .tile-title {
-  font-size: 0.875rem;
+  font-size: var(--fs-sm);
   color: var(--slate-grey);
-  font-weight: 500;
+  font-weight: var(--fw-medium);
   margin-bottom: 0.25rem;
 }
 
 .tile-value {
-  font-size: 2rem;
+  font-size: 2rem; /* Keep value large for impact */
+  font-weight: var(--fw-bold);
   color: var(--text-primary);
-  line-height: 1.2;
+  line-height: var(--lh-tight);
 }
 
 .tile-subtitle {
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   color: var(--slate-grey-light);
   margin-top: 0.25rem;
 }

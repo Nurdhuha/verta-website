@@ -1,7 +1,14 @@
-import React from 'react';
-import { ShieldCheck, History, Droplets } from 'lucide-react';
+import { ShieldCheck, History, Droplets, QrCode, Wrench, FileText } from 'lucide-react';
 import { activityLogData, zoneInsightsData } from '../../data/mockData';
 import './AnalyticsPanel.css';
+
+const getActivityIcon = (action: string) => {
+  const a = action.toLowerCase();
+  if (a.includes('scan')) return <QrCode size={14} />;
+  if (a.includes('replace') || a.includes('fix')) return <Wrench size={14} />;
+  if (a.includes('report') || a.includes('generate')) return <FileText size={14} />;
+  return <History size={14} />;
+};
 
 const AnalyticsPanel = () => {
   return (
@@ -57,13 +64,18 @@ const AnalyticsPanel = () => {
             <History size={16} />
             <span>Recent Activity</span>
           </div>
-          <div className="activity-list">
+          <div className="activity-timeline">
             {activityLogData.map((entry, index) => (
-              <div key={index} className="activity-item">
-                <div className="activity-time">{entry.time}</div>
-                <div className="activity-details">
-                  <p><strong>{entry.user}</strong> {entry.action}</p>
-                  <span>{entry.detail}</span>
+              <div key={index} className="activity-node">
+                <div className="activity-time-left">{entry.time}</div>
+                <div className="timeline-connector"></div>
+                <div className="activity-icon-node">
+                  {getActivityIcon(entry.action)}
+                </div>
+                <div className="activity-content-box">
+                  <div className="activity-user">{entry.user}</div>
+                  <p className="activity-action">{entry.action}</p>
+                  <span className="activity-detail">{entry.detail}</span>
                 </div>
               </div>
             ))}

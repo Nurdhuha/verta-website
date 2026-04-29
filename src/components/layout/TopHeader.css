@@ -143,12 +143,12 @@
 }
 
 .user-name {
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
   color: var(--text-primary);
 }
 
 .user-role {
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   color: var(--slate-grey);
 }
