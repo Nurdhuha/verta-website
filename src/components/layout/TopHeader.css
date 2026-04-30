@@ -52,6 +52,7 @@
   width: 100%;
   font-family: var(--font-family);
   color: var(--text-primary);
+  font-size: 16px;
 }
 
 .search-bar input::placeholder {
@@ -114,6 +115,12 @@
   display: flex;
   align-items: center;
   gap: 24px;
+}
+
+.header-actions .btn-primary {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 20px;
 }
 
 .notification-btn {
