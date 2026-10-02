@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VERTA - Pitch Deck Final GAYATAMA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1B4332;
+      --primary-dark: #0F2D1F;
+      --secondary: #8C5835;
+      --secondary-light: #B07D4F;
+      --accent: #2D6A4F;
+      --mint: #52B788;
+      --mint-light: #D8F3DC;
+      --mint-glow: rgba(82, 183, 136, 0.15);
+      --bg-dark: #081C15;
+      --bg-slide-light: #FBFBFA;
+      --bg-card: #FFFFFF;
+      --border-color: #E2E8F0;
+      --text-dark: #1F2421;
+      --text-muted: #5B6B63;
+      --text-light: #F8FAF9;
+      --danger: #E63946;
+      --danger-light: #FDE8E9;
+      --gold: #D4A373;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #05100B;
+      color: var(--text-dark);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+    }
+
+    /* Presentation Frame (16:9 Strict Ratio) */
+    #deck-container {
+      position: relative;
+      width: 100vw;
+      height: 56.25vw; /* 16:9 ratio */
+      max-height: 100vh;
+      max-width: 177.78vh; /* 16:9 ratio */
+      background: var(--bg-slide-light);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 3.5% 4.5%;
+      display: none;
+      flex-direction: column;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform: scale(0.99);
+      background-color: var(--bg-slide-light);
+      overflow: hidden;
+    }
+
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      transform: scale(1);
+      z-index: 10;
+    }
+
+    /* Dark Slide Variant (Cover, Closing) */
+    .slide.theme-dark {
+      background: radial-gradient(circle at 85% 15%, #1B4332 0%, #0F2D1F 50%, #081C15 100%);
+      color: var(--text-light);
+    }
+
+    .slide.theme-dark .text-muted {
+      color: #A3B899;
+    }
+
+    /* Header & Badges */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2.2%;
+      flex-shrink: 0;
+    }
+
+    .badge-event {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: var(--mint-glow);
+      color: var(--accent);
+      border: 1px solid rgba(82, 183, 136, 0.3);
+    }
+
+    .theme-dark .badge-event {
+      background: rgba(82, 183, 136, 0.2);
+      color: var(--mint-light);
+      border-color: rgba(82, 183, 136, 0.4);
+    }
+
+    .slide-title-group h2 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .theme-dark .slide-title-group h2 {
+      color: #FFFFFF;
+    }
+
+    .slide-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .slide-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 0;
+    }
+
+    /* Typography helpers */
+    .text-mint { color: var(--mint); }
+    .text-primary { color: var(--primary); }
+    .text-secondary { color: var(--secondary); }
+    .font-bold { font-weight: 700; }
+    .font-black { font-weight: 800; }
+
+    /* Card Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      height: 100%;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      height: 100%;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      height: 100%;
+    }
+
+    .grid-6 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 14px;
+      height: 100%;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card.highlight {
+      border: 1.5px solid var(--mint);
+      background: linear-gradient(180deg, #FFFFFF 0%, #F5FAF7 100%);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      background: var(--mint-glow);
+      color: var(--primary);
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .card-body {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      flex: 1;
+    }
+
+    .card-stat {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 4px;
+      line-height: 1.1;
+    }
+
+    .stat-danger {
+      color: var(--danger);
+    }
+
+    /* Tables */
+    .deck-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.82rem;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      background: #FFFFFF;
+    }
+
+    .deck-table th {
+      background: #F1F5F3;
+      color: var(--primary-dark);
+      font-weight: 700;
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .deck-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid #EDF2F7;
+      color: var(--text-dark);
+      vertical-align: middle;
+    }
+
+    .deck-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .deck-table tr.verta-row {
+      background: #F0F9F4;
+      font-weight: 600;
+    }
+
+    .deck-table tr.verta-row td {
+      color: var(--primary-dark);
+      border-top: 1.5px solid var(--mint);
+      border-bottom: 1.5px solid var(--mint);
+    }
+
+    .badge-check {
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .badge-cross {
+      color: var(--danger);
+      font-weight: bold;
+    }
+
+    /* Flow step */
+    .flow-steps {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    .flow-item {
+      flex: 1;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 14px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      position: relative;
+    }
+
+    .flow-item.active-step {
+      border-color: var(--mint);
+      background: #F5FAF7;
+    }
+
+    .flow-num {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--mint);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .flow-title {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .flow-arrow {
+      color: var(--mint);
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    /* Pills */
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: #F1F5F3;
+      color: var(--primary-dark);
+      border: 1px solid #E2E8F0;
+    }
+
+    .pill.pill-mint {
+      background: var(--mint-glow);
+      color: var(--primary);
+      border-color: rgba(82, 183, 136, 0.4);
+    }
+
+    /* Controls bar */
+    #nav-controls {
+      position: fixed;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(15, 45, 31, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 8px 18px;
+      border-radius: 40px;
+      border: 1px solid rgba(82, 183, 136, 0.3);
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      z-index: 100;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .nav-btn:hover {
+      background: rgba(82, 183, 136, 0.3);
+      color: var(--mint-light);
+    }
+
+    #slide-counter {
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      min-width: 80px;
+      text-align: center;
+    }
+
+    /* Progress bar */
+    #progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--secondary-light), var(--mint));
+      width: 0%;
+      transition: width 0.3s ease;
+      z-index: 50;
+    }
+
+    /* Overview Modal */
+    #overview-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(5, 16, 11, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 200;
+      display: none;
+      padding: 40px;
+      overflow-y: auto;
+    }
+
+    #overview-modal.show {
+      display: block;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .overview-item {
+      background: #0F2D1F;
+      border: 1px solid rgba(82, 183, 136, 0.2);
+      border-radius: 10px;
+      padding: 16px;
+      color: #FFF;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .overview-item:hover, .overview-item.active {
+      border-color: var(--mint);
+      background: #1B4332;
+      transform: translateY(-4px);
+    }
+
+    .overview-item h4 {
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      color: var(--mint-light);
+    }
+
+    .overview-item p {
+      font-size: 0.75rem;
+      color: #A3B899;
+    }
+
+    /* Print styles for Export to PDF */
+    @media print {
+      body {
+        background: #FFF;
+        overflow: visible;
+        display: block;
+      }
+      #deck-container {
+        width: 100%;
+        height: auto;
+        max-width: none;
+        max-height: none;
+        box-shadow: none;
+      }
+      .slide {
+        position: relative;
+        display: flex !important;
+        opacity: 1 !important;
+        transform: none !important;
+        width: 100vw;
+        height: 56.25vw;
+        page-break-after: always;
+        break-after: page;
+      }
+      #nav-controls, #progress-bar, #overview-modal {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="deck-container">
+    <div id="progress-bar"></div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 1: COVER                             -->
+    <!-- ========================================== -->
+    <div class="slide theme-dark active" data-slide="1">
+      <div class="slide-header">
+        <div class="badge-event">GAYATAMA • LEAN CANVAS COMPETITION</div>
+        <div style="font-size: 0.8rem; color: #A3B899; font-weight: 600;">FINAL PITCH DECK</div>
+      </div>
+      <div class="slide-content" style="justify-content: center; align-items: flex-start;">
+        <div style="display: inline-block; background: rgba(82,183,136,0.15); border: 1px solid rgba(82,183,136,0.4); padding: 4px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; color: var(--mint); margin-bottom: 12px;">
+          STARTUP VENTURE PROPOSAL
+        </div>
+        <h1 style="font-size: 4.2rem; font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin-bottom: 14px; color: #FFFFFF;">
+          VERTA<span style="color: var(--mint);">.</span>
+        </h1>
+        <p style="font-size: 1.35rem; font-weight: 500; color: #D8F3DC; max-width: 85%; margin-bottom: 24px; line-height: 1.4;">
+          “End-to-end reforestation partner for CSR companies, from local coconut fiber to measurable ESG impact.”
+        </p>
+        <div style="background: rgba(255, 255, 255, 0.05); border-left: 3px solid var(--mint); padding: 12px 18px; border-radius: 0 8px 8px 0; max-width: 80%;">
+          <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--mint); margin-bottom: 2px;">HIGH-LEVEL CONCEPT</div>
+          <div style="font-size: 0.95rem; color: #E8F5E9; line-height: 1.4;">
+            An integrated reforestation solution combining passive technology and ecological stewardship to sustainably maximize tree survival rates.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 2: THE 3 CORE PROBLEMS               -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="2">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">PROBLEM & URGENCY</div>
+          <h2>Three Critical Crises in Conventional Reforestation</h2>
+          <div class="slide-subtitle">Why do multimillion-dollar CSR tree planting programs end up as ceremonial "Ghost Forests"?</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="grid-3">
+          <div class="card" style="border-top: 4px solid var(--danger);">
+            <div class="card-stat stat-danger">20% – 40%</div>
+            <div class="card-title" style="margin-bottom: 8px;">Dismal CSR Seedling Survival Rate</div>
+            <div class="card-body">
+              Mass seedling mortality strikes in the critical <strong>first 0 – 6 months</strong> due to severe drought and grazing wildlife. Corporate CSR capital is squandered without real ecological impact.
+            </div>
+            <div style="margin-top: 10px; font-size: 0.75rem; background: var(--danger-light); color: var(--danger); padding: 6px 10px; border-radius: 6px; font-weight: 600;">
+              ⚠️ Ghost Forest Effect: Sunk capital without impact
+            </div>
+          </div>
+
+          <div class="card" style="border-top: 4px solid var(--secondary);">
+            <div class="card-stat" style="color: var(--secondary);">ZERO DATA</div>
+            <div class="card-title" style="margin-bottom: 8px;">Complete Absence of Measurable ESG Data</div>
+            <div class="card-body">
+              Corporations cannot quantify or audit their reforestation outcomes, despite mandatory sustainability reporting regulations under <strong>POJK No. 51/2017</strong>.
+            </div>
+            <div style="margin-top: 10px; font-size: 0.75rem; background: #FFF4E5; color: #B45309; padding: 6px 10px; border-radius: 6px; font-weight: 600;">
+              ⚖️ Greenwashing Liabilities & Regulatory Penalties
+            </div>
+          </div>
+
+          <div class="card" style="border-top: 4px solid var(--primary);">
+            <div class="card-stat">14+ M Ha</div>
+            <div class="card-title" style="margin-bottom: 8px;">Critical Land Expanding Without Scalable Solutions</div>
+            <div class="card-body">
+              Millions of degraded hectares urgently require rehabilitation, but conventional methods (water trucks, manual buckets) are water-inefficient and cost-prohibitive in arid remote terrains.
+            </div>
+            <div style="margin-top: 10px; font-size: 0.75rem; background: #E8F5E9; color: var(--primary); padding: 6px 10px; border-radius: 6px; font-weight: 600;">
+              🌱 Urgent Demand for Passive, Scalable Tech
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 3: EXISTING ALTERNATIVES             -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="3">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">COMPETITIVE GAP</div>
+          <h2>Why Do Existing Alternatives Fail in the Field?</h2>
+          <div class="slide-subtitle">A critical benchmark of 6 conventional methods vs. the VERTA Integrated Ecosystem.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <table class="deck-table">
+          <thead>
+            <tr>
+              <th>Alternative Method</th>
+              <th>Passive Water Storage</th>
+              <th>Wildlife & Heat Shield</th>
+              <th>100% Biodegradable</th>
+              <th>Verified ESG Audit Data</th>
+              <th>Field Viability Verdict</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Organic Mulch</strong></td>
+              <td><span class="badge-cross">❌ None</span></td>
+              <td><span class="badge-cross">❌ Zero</span></td>
+              <td><span class="badge-check">✅ Yes</span></td>
+              <td><span class="badge-cross">❌ None</span></td>
+              <td>Surface cover only; cannot store or passively channel water to roots.</td>
+            </tr>
+            <tr>
+              <td><strong>Manual Bucket Watering</strong></td>
+              <td><span class="badge-cross">❌ Limited</span></td>
+              <td><span class="badge-cross">❌ Zero</span></td>
+              <td><span class="badge-check">✅ N/A</span></td>
+              <td><span class="badge-cross">❌ Manual Log</span></td>
+              <td>Water-inefficient, exorbitant labor logistics, unscalable in forests.</td>
+            </tr>
+            <tr>
+              <td><strong>Synthetic Hydrogels</strong></td>
+              <td><span class="badge-check">✅ Yes</span></td>
+              <td><span class="badge-cross">❌ Zero</span></td>
+              <td><span class="badge-cross">❌ Toxic Residues</span></td>
+              <td><span class="badge-cross">❌ None</span></td>
+              <td>Binds water but non-biodegradable; synthetic polymers pollute soil.</td>
+            </tr>
+            <tr>
+              <td><strong>Drip Irrigation</strong></td>
+              <td><span class="badge-check">✅ Yes</span></td>
+              <td><span class="badge-cross">❌ Zero</span></td>
+              <td><span class="badge-cross">❌ Plastic Pipes</span></td>
+              <td><span class="badge-cross">❌ Disconnected</span></td>
+              <td>Complex piping infrastructure; impractical for rugged forest terrains.</td>
+            </tr>
+            <tr>
+              <td><strong>Plastic Tree Shelters</strong></td>
+              <td><span class="badge-cross">❌ None</span></td>
+              <td><span class="badge-check">⚠️ Partial</span></td>
+              <td><span class="badge-cross">❌ Plastic Waste</span></td>
+              <td><span class="badge-cross">❌ None</span></td>
+              <td>Physical shield only; zero water storage and litters microplastics.</td>
+            </tr>
+            <tr>
+              <td><strong>No System (Status Quo)</strong></td>
+              <td><span class="badge-cross">❌ None</span></td>
+              <td><span class="badge-cross">❌ Zero</span></td>
+              <td><span class="badge-check">✅ Natural</span></td>
+              <td><span class="badge-cross">❌ None</span></td>
+              <td>Most common practice, yet yields lowest survival rates (20%–40%).</td>
+            </tr>
+            <tr class="verta-row">
+              <td><strong>VERTA Integrated Ecosystem</strong></td>
+              <td><span class="badge-check">✅ Passive Donut</span></td>
+              <td><span class="badge-check">✅ Bio-PLA Chimney</span></td>
+              <td><span class="badge-check">✅ 100% Organic</span></td>
+              <td><span class="badge-check">✅ Offline SaaS</span></td>
+              <td><strong>Boosts survival rate to ≥85% with tamper-proof ESG compliance.</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 4: THE SOLUTION                      -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="4">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">OUR SOLUTION</div>
+          <h2>The VERTA Integrated End-to-End Solution</h2>
+          <div class="slide-subtitle">Synergizing passive biomaterial hardware with a certified community-driven service pipeline.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="grid-2" style="margin-bottom: 14px;">
+          <!-- Hardware Card -->
+          <div class="card highlight">
+            <div class="card-top">
+              <div class="card-icon">🥥</div>
+              <div>
+                <div class="card-title">1. VERTA Ring (Hardware)</div>
+                <div style="font-size: 0.75rem; color: var(--mint); font-weight: 600;">Passive Biomaterial Reservoir</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <ul style="padding-left: 18px; margin-top: 4px; display: flex; flex-direction: column; gap: 6px;">
+                <li><strong>Donut-Shaped Reservoir:</strong> Upcycles local coconut coir to passively wick stored water directly into root zones via capillary action.</li>
+                <li><strong>Anti-Evaporation & Protective Chimney:</strong> Features specialized cover and central tube shielding saplings from wildlife and scorching heat.</li>
+                <li><strong>100% Organic Composition:</strong> Coir fiber + cassava starch binder + natural beeswax sealant.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Service Card -->
+          <div class="card highlight">
+            <div class="card-top">
+              <div class="card-icon">🔄</div>
+              <div>
+                <div class="card-title">2. Turnkey Service Pipeline</div>
+                <div style="font-size: 0.75rem; color: var(--accent); font-weight: 600;">Outcome-Based Partnership</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <ul style="padding-left: 18px; margin-top: 4px; display: flex; flex-direction: column; gap: 6px;">
+                <li><strong>Ecological Assessment:</strong> Pre-planting soil chemistry and native species matching.</li>
+                <li><strong>Installation & Training:</strong> Implemented alongside local rural community workers.</li>
+                <li><strong>Community Caretakers:</strong> Routine health checks and scheduled water refills.</li>
+                <li><strong>Verified ESG Auditing:</strong> Certified survival rates and verified CO₂ sequestration reports.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Integrated Pipeline -->
+        <div class="flow-steps">
+          <div class="flow-item">
+            <div class="flow-num">Stage 1</div>
+            <div class="flow-title">Ecological Assessment</div>
+          </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-item">
+            <div class="flow-num">Stage 2</div>
+            <div class="flow-title">Precision Seedling Match</div>
+          </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-item active-step">
+            <div class="flow-num">Stage 3</div>
+            <div class="flow-title">VERTA Ring Installation</div>
+          </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-item">
+            <div class="flow-num">Stage 4</div>
+            <div class="flow-title">Community Caretaking</div>
+          </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-item active-step">
+            <div class="flow-num">Stage 5</div>
+            <div class="flow-title">Verified ESG Reporting</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 5: UNIQUE VALUE PROPOSITION          -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="5">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">UNIQUE VALUE PROPOSITION</div>
+          <h2>VERTA's Three Value Proposition Pillars</h2>
+          <div class="slide-subtitle">Merging biomaterial engineering, ecological intelligence, and sustainable stewardship.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="grid-3" style="margin-bottom: 14px;">
+          <div class="card" style="border-top: 4px solid var(--secondary);">
+            <div class="card-icon" style="background: #F8ECE5; color: var(--secondary);">🔬</div>
+            <div class="card-title" style="margin-top: 10px;">Engineering Material</div>
+            <div class="card-body" style="margin-top: 8px;">
+              • Self-regulating passive water reservoir (*VERTA Ring*).<br>
+              • Regulates optimal root-zone moisture without electricity or external pumps.<br>
+              • Prevents root rot via micro-porous controlled capillary release.
+            </div>
+          </div>
+
+          <div class="card" style="border-top: 4px solid var(--primary);">
+            <div class="card-icon" style="background: #E8F5E9; color: var(--primary);">🌱</div>
+            <div class="card-title" style="margin-top: 10px;">Ecological Intelligence</div>
+            <div class="card-body" style="margin-top: 8px;">
+              • Native species selection tailored to specific soil chemistry and historical vegetation.<br>
+              • <em>Core Philosophy:</em> Not just planting random trees, but functionally restoring resilient ecosystems.
+            </div>
+          </div>
+
+          <div class="card" style="border-top: 4px solid var(--mint);">
+            <div class="card-icon" style="background: var(--mint-glow); color: var(--mint);">📲</div>
+            <div class="card-title" style="margin-top: 10px;">Sustainable Service System</div>
+            <div class="card-body" style="margin-top: 8px;">
+              • Integrated digital monitoring paired with proactive refill schedules.<br>
+              • Powered by empowered local villagers trained as <em>Forest Caretakers</em>.<br>
+              • Audit-ready data guaranteeing compliance with POJK No. 51/2017.
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #F0F7F4; border: 1px dashed var(--mint); border-radius: 8px; padding: 12px 18px; text-align: center;">
+          <strong style="color: var(--primary-dark); font-size: 0.9rem;">High-Level Concept:</strong>
+          <span style="color: var(--text-muted); font-size: 0.9rem;"> “An integrated reforestation solution combining passive technology and ecological stewardship to sustainably maximize tree survival rates.”</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 6: PRODUCT DEEP DIVE (PROTOTYPE)     -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="6">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">PROTOTYPE & MATERIAL SCIENCE</div>
+          <h2>Product Anatomy & Biomaterial Engineering</h2>
+          <div class="slide-subtitle">Precision bio-composite formula upcycling coconut coir with a biodegradable protective tube.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="grid-2">
+          <!-- 4 Core Components -->
+          <div class="card">
+            <div class="card-title" style="margin-bottom: 12px;">4 Core Structural Components</div>
+            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.82rem;">
+              <div style="padding: 8px 12px; background: #F8FAF9; border-radius: 6px; border-left: 3px solid var(--secondary);">
+                <strong>1. Coconut Coir Fiber (Structural Matrix):</strong> Primary structural component providing shape, micro-porosity, and superior water absorption capacity.
+              </div>
+              <div style="padding: 8px 12px; background: #F8FAF9; border-radius: 6px; border-left: 3px solid var(--mint);">
+                <strong>2. Protective Chimney (Biodegradable PLA):</strong> Perforated center tube shielding sapling stems while enabling airflow and refill channel access.
+              </div>
+              <div style="padding: 8px 12px; background: #F8FAF9; border-radius: 6px; border-left: 3px solid var(--primary);">
+                <strong>3. Internal Water Reservoir:</strong> Hollow internal chamber holding stored water that diffuses gradually into the root zone.
+              </div>
+              <div style="padding: 8px 12px; background: #F8FAF9; border-radius: 6px; border-left: 3px solid var(--gold);">
+                <strong>4. Composite Base Foundation:</strong> Durable layer maintaining mechanical stability during planting; enables slow capillary wicking downwards.
+              </div>
+            </div>
+          </div>
+
+          <!-- Material Composition -->
+          <div class="card highlight">
+            <div class="card-title" style="margin-bottom: 8px;">Validated Material Composition</div>
+            <div class="card-body">
+              <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #EDF2F7; padding-bottom: 4px;">
+                  <span>🥥 Local Coconut Coir Fiber</span>
+                  <span class="pill pill-mint font-bold">40 – 50%</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #EDF2F7; padding-bottom: 4px;">
+                  <span>🎋 Bamboo / Kenaf Fiber</span>
+                  <span class="pill font-bold">15 – 20%</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #EDF2F7; padding-bottom: 4px;">
+                  <span>🥔 Cassava Starch (Tapioca Binder)</span>
+                  <span class="pill font-bold">10 – 15%</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #EDF2F7; padding-bottom: 4px;">
+                  <span>🍃 Biodegradable PLA / PHA</span>
+                  <span class="pill font-bold">10 – 15%</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #EDF2F7; padding-bottom: 4px;">
+                  <span>🌳 Natural Rubber Latex</span>
+                  <span class="pill font-bold">5 – 10%</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>🕯️ Natural Beeswax Coating</span>
+                  <span class="pill font-bold">Thin Anti-Evaporation Layer</span>
+                </div>
+              </div>
+              <div style="margin-top: 12px; font-size: 0.75rem; background: #E8F5E9; padding: 6px 10px; border-radius: 6px; color: var(--primary);">
+                ✅ <strong>100% Organic:</strong> Decomposes into nutrient-rich soil humus within 12–18 months with zero microplastic residue.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 7: TECHNOLOGY & DASHBOARD            -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="7">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">DIGITAL TRANSPARENCY</div>
+          <h2>VERTA Digital Monitoring System</h2>
+          <div class="slide-subtitle">Verified ESG reporting powered by unique QR Codes and an offline-first mobile architecture.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="grid-2">
+          <!-- Key Features -->
+          <div class="card">
+            <div class="card-title" style="margin-bottom: 10px;">Key Technological Capabilities</div>
+            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.82rem; color: var(--text-muted);">
+              <div>
+                <strong style="color: var(--primary-dark);">🏷️ Digital Birth Certificate (Laser QR Tag):</strong><br>
+                Unique weather-resistant QR code laser-engraved onto durable bio-resin tags attached to each tree, locking GPS coordinates and planting timestamps.
+              </div>
+              <div>
+                <strong style="color: var(--primary-dark);">📶 Offline-First Mobile Architecture:</strong><br>
+                Field caretakers log growth photos, height progress, and soil moisture locally without cellular signal; data auto-syncs to cloud once in network range.
+              </div>
+              <div>
+                <strong style="color: var(--primary-dark);">📊 10%–15% Stratified Random Sampling:</strong><br>
+                Statistically validated random block auditing reducing operational monitoring expenses by 85% while preserving 95%+ confidence levels.
+              </div>
+              <div>
+                <strong style="color: var(--primary-dark);">📄 One-Click ESG Report:</strong><br>
+                Automated audit-ready reporting compliant with POJK No. 51/2017 for corporate sustainability divisions.
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Prototype Metrics -->
+          <div class="card highlight" style="justify-content: space-between;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="card-title">Live Prototype Status</div>
+                <a href="https://prototype-verta-website.vercel.app/" target="_blank" style="font-size: 0.72rem; color: var(--mint); font-weight: bold; text-decoration: none;">🔗 Open Live Web App ↗</a>
+              </div>
+              <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 12px;">Executive Dashboard Real Metrics:</div>
+              
+              <div class="grid-2" style="height: auto; gap: 10px; margin-bottom: 12px;">
+                <div style="background: #FFF; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); text-align: center;">
+                  <div style="font-size: 1.4rem; font-weight: 800; color: var(--primary);">12,450</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Trees Planted</div>
+                </div>
+                <div style="background: #FFF; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); text-align: center;">
+                  <div style="font-size: 1.4rem; font-weight: 800; color: var(--mint);">94.2%</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Survival Rate</div>
+                </div>
+                <div style="background: #FFF; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); text-align: center;">
+                  <div style="font-size: 1.4rem; font-weight: 800; color: var(--secondary);">2,850</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Tons CO₂ Sequestered</div>
+                </div>
+                <div style="background: #FFF; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); text-align: center;">
+                  <div style="font-size: 1.4rem; font-weight: 800; color: var(--primary-dark);">400/500</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Field Sampling Status</div>
+                </div>
+              </div>
+            </div>
+            <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center; border-top: 1px solid #EDF2F7; padding-top: 8px;">
+              Live validation deployed at: prototype-verta-website.vercel.app
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 8: CUSTOMER SEGMENTS & EARLY ADOPTER -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="8">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">MARKET SEGMENTATION</div>
+          <h2>Target Market Segmentation & Early Adopters</h2>
+          <div class="slide-subtitle">Laser-focused on enterprises bound by regulatory mandates and net-zero commitments.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="grid-3" style="margin-bottom: 14px;">
+          <!-- Primary -->
+          <div class="card highlight">
+            <div class="card-icon" style="background: #E8F5E9; color: var(--primary);">🏢</div>
+            <div style="font-size: 0.72rem; font-weight: 800; color: var(--primary); text-transform: uppercase; margin-top: 6px;">PRIMARY TARGET</div>
+            <div class="card-title" style="margin-top: 2px;">B2B Corporations (CSR/ESG)</div>
+            <div class="card-body" style="margin-top: 8px;">
+              Enterprises in mining, energy, banking, and manufacturing with mandatory reforestation obligations and POJK 51/2017 sustainability compliance.
+            </div>
+          </div>
+
+          <!-- Secondary -->
+          <div class="card">
+            <div class="card-icon" style="background: #F0F4F8; color: #1E3A8A;">🏛️</div>
+            <div style="font-size: 0.72rem; font-weight: 800; color: #1E3A8A; text-transform: uppercase; margin-top: 6px;">SECONDARY TARGET</div>
+            <div class="card-title" style="margin-top: 2px;">B2B & B2G Institutional</div>
+            <div class="card-body" style="margin-top: 8px;">
+              Regional Environmental Agencies (DLH), Ministry of Environment & Forestry (KLHK), Green State Enterprises (BUMN), and Conservation NGOs.
+            </div>
+          </div>
+
+          <!-- Tertiary -->
+          <div class="card">
+            <div class="card-icon" style="background: #FEF3C7; color: #D97706;">👥</div>
+            <div style="font-size: 0.72rem; font-weight: 800; color: #D97706; text-transform: uppercase; margin-top: 6px;">TERTIARY TARGET</div>
+            <div class="card-title" style="margin-top: 2px;">B2C Retail / Individuals</div>
+            <div class="card-body" style="margin-top: 8px;">
+              Urban eco-conscious citizens and youth communities for small-scale tree planting and personal tree adoption programs.
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="background: #FAF8F5; border-color: var(--secondary-light);">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+            <span style="font-size: 1rem;">🎯</span>
+            <strong style="color: var(--secondary); font-size: 0.9rem;">Target Early Adopter Profile (Initial Commercial Validation):</strong>
+          </div>
+          <div style="display: flex; gap: 20px; font-size: 0.82rem; color: var(--text-dark);">
+            <div>• <strong>Enterprises with Strong ESG Mandates:</strong> Active net-zero commitments and board-level oversight.</div>
+            <div>• <strong>Regional Governments with Active Critical Land:</strong> Budgeted watershed rehabilitation programs.</div>
+            <div>• <strong>Science-Driven Conservation NGOs:</strong> Dedicated to measurable ecosystem restoration.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 9: CHANNELS & MARKETING              -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="9">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">GO-TO-MARKET</div>
+          <h2>Distribution Channels & Market Penetration (Channels)</h2>
+          <div class="slide-subtitle">Multi-channel B2B approach designed to secure multi-year institutional contracts.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="grid-3" style="height: auto; gap: 14px; margin-bottom: 14px;">
+          <div class="card">
+            <div class="card-icon">🤝</div>
+            <div class="card-title" style="margin-top: 8px; font-size: 0.95rem;">1. Direct B2B Pitching & Proposals</div>
+            <div class="card-body" style="margin-top: 6px; font-size: 0.8rem;">
+              Direct engagement with Corporate Sustainability, CSR, and HSE executives backed by guaranteed ≥85% seedling survival data.
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🌿</div>
+            <div class="card-title" style="margin-top: 8px; font-size: 0.95rem;">2. NGO & Regional Gov Partnerships</div>
+            <div class="card-body" style="margin-top: 6px; font-size: 0.8rem;">
+              Joint implementation agreements with conservation organizations and regional forestry services as field execution partners.
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🎤</div>
+            <div class="card-title" style="margin-top: 8px; font-size: 0.95rem;">3. ESG & Environmental Forums</div>
+            <div class="card-body" style="margin-top: 6px; font-size: 0.8rem;">
+              Active presence at national sustainability conventions, green business expos, and the KADIN Net Zero Hub to capture enterprise leads.
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="height: auto; gap: 14px;">
+          <div class="card">
+            <div class="card-icon">🌐</div>
+            <div class="card-title" style="margin-top: 8px; font-size: 0.95rem;">4. Website & Digital Media</div>
+            <div class="card-body" style="margin-top: 6px; font-size: 0.8rem;">
+              Interactive digital portal (live prototype) showcasing project portfolios, transparency logs, and inbound enterprise inquiries.
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🌲</div>
+            <div class="card-title" style="margin-top: 8px; font-size: 0.95rem;">5. Environmental & Forestry Networks</div>
+            <div class="card-body" style="margin-top: 6px; font-size: 0.8rem;">
+              Strategic advocacy partnerships with university forestry faculties, certified arborists, and coconut farmer cooperatives.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 10: FINANCIALS & PROJECTED SALES     -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="10">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">BUSINESS & FINANCIALS</div>
+          <h2>Cost Structure, Unit Economics & Revenue Forecast</h2>
+          <div class="slide-subtitle">High-margin venture economics powered by multi-year contracts and strong repeat orders.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="grid-3" style="height: 100%;">
+          <!-- Cost Structure -->
+          <div class="card">
+            <div class="card-title" style="margin-bottom: 8px;">Cost Structure (Lean Canvas)</div>
+            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.8rem;">
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+                  <span>Raw Materials (Coir & Composites)</span><strong>40%</strong>
+                </div>
+                <div style="height: 6px; background: #E2E8F0; border-radius: 4px; overflow: hidden;">
+                  <div style="width: 40%; height: 100%; background: var(--secondary);"></div>
+                </div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+                  <span>Manufacturing & Direct Labor</span><strong>25%</strong>
+                </div>
+                <div style="height: 6px; background: #E2E8F0; border-radius: 4px; overflow: hidden;">
+                  <div style="width: 25%; height: 100%; background: var(--primary);"></div>
+                </div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+                  <span>Distribution & Field Logistics</span><strong>15%</strong>
+                </div>
+                <div style="height: 6px; background: #E2E8F0; border-radius: 4px; overflow: hidden;">
+                  <div style="width: 15%; height: 100%; background: var(--mint);"></div>
+                </div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+                  <span>R&D & Material Formulations</span><strong>10%</strong>
+                </div>
+                <div style="height: 6px; background: #E2E8F0; border-radius: 4px; overflow: hidden;">
+                  <div style="width: 10%; height: 100%; background: #4A5568;"></div>
+                </div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+                  <span>Marketing & B2B Sales</span><strong>10%</strong>
+                </div>
+                <div style="height: 6px; background: #E2E8F0; border-radius: 4px; overflow: hidden;">
+                  <div style="width: 10%; height: 100%; background: #CBD5E0;"></div>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top: 10px; font-size: 0.72rem; color: var(--text-muted);">
+              Directly aligned with Lean Canvas cost allocation proportions.
+            </div>
+          </div>
+
+          <!-- Unit Economics -->
+          <div class="card highlight">
+            <div class="card-title" style="margin-bottom: 8px;">Compelling Unit Economics</div>
+            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.82rem;">
+              <div style="background: #FFF; padding: 8px 10px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <div style="font-size: 0.7rem; color: var(--text-muted);">COST OF GOODS SOLD (COGS)</div>
+                <div style="font-size: 1.1rem; font-weight: 800; color: var(--danger);">Rp 18,000 / unit (~$1.15)</div>
+              </div>
+              <div style="background: #FFF; padding: 8px 10px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <div style="font-size: 0.7rem; color: var(--text-muted);">B2B SELLING PRICE</div>
+                <div style="font-size: 1.1rem; font-weight: 800; color: var(--primary);">Rp 38,000 / unit (~$2.45)</div>
+              </div>
+              <div style="background: #F0F9F4; padding: 8px 10px; border-radius: 6px; border: 1px solid var(--mint);">
+                <div style="font-size: 0.7rem; color: var(--mint);">GROSS PROFIT MARGIN</div>
+                <div style="font-size: 1.25rem; font-weight: 800; color: var(--accent);">52.6%</div>
+              </div>
+              <div style="font-size: 0.74rem; color: var(--text-muted); line-height: 1.3;">
+                <strong>Turnkey Per Hectare:</strong> Rp 85M/Ha (~$5,500/Ha) including 1,000 seedlings + installation + 1-year monitoring.
+              </div>
+            </div>
+          </div>
+
+          <!-- Projected Sales -->
+          <div class="card">
+            <div class="card-title" style="margin-bottom: 8px;">3-Year Sales Projections</div>
+            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.8rem;">
+              <div style="padding: 8px; background: #F8FAF9; border-radius: 6px; border-left: 3px solid var(--secondary);">
+                <strong>Year 1:</strong> 20,000 units + 10 Ha<br>
+                <span style="font-size: 1.05rem; font-weight: 800; color: var(--primary);">Rp 1.1 Billion ($71K)</span>
+                <span style="font-size: 0.7rem; color: var(--mint); display: block;">BEP Reached at Month 14</span>
+              </div>
+              <div style="padding: 8px; background: #F8FAF9; border-radius: 6px; border-left: 3px solid var(--primary);">
+                <strong>Year 2:</strong> 65,000 units + 30 Ha<br>
+                <span style="font-size: 1.05rem; font-weight: 800; color: var(--primary);">Rp 3.5 Billion ($225K)</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted); display: block;">Net Margin: 22%</span>
+              </div>
+              <div style="padding: 8px; background: #F8FAF9; border-radius: 6px; border-left: 3px solid var(--mint);">
+                <strong>Year 3:</strong> 180,000 units + 80 Ha<br>
+                <span style="font-size: 1.05rem; font-weight: 800; color: var(--primary);">Rp 9.8 Billion ($632K)</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted); display: block;">Net Margin: 28%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 11: KEY METRICS & IMPACT             -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="11">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">KEY METRICS & IMPACT</div>
+          <h2>Key Performance Indicators (KPIs) & Triple Bottom Line</h2>
+          <div class="slide-subtitle">A single North Star Metric driving commercial, social, and ecological excellence.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <!-- North Star Metric Banner -->
+        <div style="background: linear-gradient(90deg, #1B4332 0%, #2D6A4F 100%); color: #FFF; padding: 10px 18px; border-radius: 8px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mint-light); font-weight: bold;">NORTH STAR METRIC</div>
+            <div style="font-size: 1.15rem; font-weight: 800;">“Verified Surviving Trees”</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.15); padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">
+            Year-1 Target: ≥18,000 Surviving Trees
+          </div>
+        </div>
+
+        <div class="grid-3" style="height: auto;">
+          <!-- Financial (Profit) -->
+          <div class="card">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+              <span style="font-size: 1.2rem;">📈</span>
+              <strong style="color: var(--primary); font-size: 0.9rem;">1. Financial (Profit)</strong>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+              • Unit sales per quarter (Target: 5,000 units/Q).<br>
+              • Contract value per hectare (Rp/Ha).<br>
+              • B2B Renewal / Repeat Order Rate >70%.<br>
+              • LTV / CAC Ratio > 3x.
+            </div>
+          </div>
+
+          <!-- Social (People) -->
+          <div class="card">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+              <span style="font-size: 1.2rem;">👥</span>
+              <strong style="color: var(--secondary); font-size: 0.9rem;">2. Social (People)</strong>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+              • Number of local Forest Caretakers recruited.<br>
+              • Community income uplift around forests (+25%).<br>
+              • Empowered smallholder coconut farmer partners.
+            </div>
+          </div>
+
+          <!-- Environmental (Planet) -->
+          <div class="card highlight">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+              <span style="font-size: 1.2rem;">🌍</span>
+              <strong style="color: var(--mint); font-size: 0.9rem;">3. Environmental (Planet)</strong>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+              • <strong>Seedling survival rate jumps to ≥85%</strong>.<br>
+              • Verified CO₂ sequestered (Tons/year).<br>
+              • Degraded critical land restored (Hectares).<br>
+              • 70% water savings vs. manual watering.
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 10px; display: flex; gap: 10px; justify-content: center; font-size: 0.75rem;">
+          <span class="pill pill-mint">SDG 13: Climate Action</span>
+          <span class="pill pill-mint">SDG 15: Life on Land</span>
+          <span class="pill pill-mint">SDG 8: Decent Work & Economic Growth</span>
+          <span class="pill pill-mint">SDG 12: Responsible Consumption</span>
+        </div>
+    <!-- ========================================== -->
+    <!-- SLIDE 12: THE FOUNDING TEAM                -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="12">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">FOUNDING TEAM</div>
+          <h2>Multidisciplinary Leadership & Execution</h2>
+          <div class="slide-subtitle">A balanced core team uniting venture strategy, biomaterial engineering, and forestry field operations.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="grid-3" style="margin-bottom: 12px;">
+          <!-- Member 1: Hustler -->
+          <div class="card highlight" style="text-align: center; align-items: center; justify-content: flex-start;">
+            <div style="width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 8px; box-shadow: 0 4px 10px rgba(27,67,50,0.25);">
+              💼
+            </div>
+            <div style="font-size: 0.72rem; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em;">THE HUSTLER</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: var(--primary-dark); margin: 2px 0;">Chief Executive Officer</div>
+            <div style="font-size: 0.78rem; font-weight: 600; color: var(--secondary); margin-bottom: 8px;">Business & Strategy Lead</div>
+            <div style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.4; text-align: left; width: 100%; border-top: 1px solid #EDF2F7; padding-top: 8px;">
+              • <strong>B2B Enterprise Partnerships:</strong> Leads direct pitching to corporate CSR, mining, and banking sustainability heads.<br>
+              • <strong>ESG Compliance:</strong> Aligns VERTA metrics with POJK No. 51/2017 legal sustainability reporting standards.<br>
+              • <strong>Venture Growth:</strong> Manages unit economics, investor relations, and strategic commercial contracts.
+            </div>
+            <div style="margin-top: auto; padding-top: 8px; width: 100%;">
+              <span class="pill pill-mint" style="display: block; font-size: 0.7rem; text-align: center;">Venture Strategy & B2B Sales</span>
+            </div>
+          </div>
+
+          <!-- Member 2: Hacker -->
+          <div class="card highlight" style="text-align: center; align-items: center; justify-content: flex-start;">
+            <div style="width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, var(--secondary), var(--secondary-light)); color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 8px; box-shadow: 0 4px 10px rgba(140,88,53,0.25);">
+              🔬
+            </div>
+            <div style="font-size: 0.72rem; font-weight: 800; color: var(--secondary); text-transform: uppercase; letter-spacing: 0.05em;">THE HACKER</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: var(--primary-dark); margin: 2px 0;">Chief Technology Officer</div>
+            <div style="font-size: 0.78rem; font-weight: 600; color: var(--secondary); margin-bottom: 8px;">Biomaterial & Tech Lead</div>
+            <div style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.4; text-align: left; width: 100%; border-top: 1px solid #EDF2F7; padding-top: 8px;">
+              • <strong>Composite R&D:</strong> Formulates coconut coir, starch, and latex ratios for maximum passive water retention.<br>
+              • <strong>Offline-First Architecture:</strong> Architected mobile SQLite data collection and tamper-proof GPS sync.<br>
+              • <strong>Tooling & Lab Testing:</strong> Oversees semi-automated hydraulic mold tooling and ISO biodegradability verification.
+            </div>
+            <div style="margin-top: auto; padding-top: 8px; width: 100%;">
+              <span class="pill font-bold" style="display: block; font-size: 0.7rem; background: #F8ECE5; color: var(--secondary); text-align: center;">Material Science & Full-Stack</span>
+            </div>
+          </div>
+
+          <!-- Member 3: Hipster -->
+          <div class="card highlight" style="text-align: center; align-items: center; justify-content: flex-start;">
+            <div style="width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--mint)); color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 8px; box-shadow: 0 4px 10px rgba(82,183,136,0.25);">
+              🌿
+            </div>
+            <div style="font-size: 0.72rem; font-weight: 800; color: var(--mint); text-transform: uppercase; letter-spacing: 0.05em;">THE HIPSTER</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: var(--primary-dark); margin: 2px 0;">Chief Operating Officer</div>
+            <div style="font-size: 0.78rem; font-weight: 600; color: var(--accent); margin-bottom: 8px;">Ecology & Community Lead</div>
+            <div style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.4; text-align: left; width: 100%; border-top: 1px solid #EDF2F7; padding-top: 8px;">
+              • <strong>Ecological Intelligence:</strong> Conducts pre-planting soil assessments and native sapling compatibility matching.<br>
+              • <strong>Forest Caretakers Network:</strong> Mobilizes, trains, and manages local community maintenance teams.<br>
+              • <strong>Feedstock Supply Chain:</strong> Manages coconut de-husking cooperative partnerships and field delivery logistics.
+            </div>
+            <div style="margin-top: auto; padding-top: 8px; width: 100%;">
+              <span class="pill pill-mint" style="display: block; font-size: 0.7rem; text-align: center;">Forest Ecology & Field Ops</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #F8FAF9; border: 1px solid var(--border-color); border-radius: 8px; padding: 8px 14px; display: flex; justify-content: space-between; align-items: center; font-size: 0.76rem; color: var(--text-muted);">
+          <span>👥 <strong>Execution Readiness:</strong> Complementary skill balance across Venture Commercialization (Hustler), Deep Bio-Tech (Hacker), and Field Forestry Operations (Hipster).</span>
+          <span style="font-weight: 700; color: var(--primary);">Full-Time Dedicated Founders • GAYATAMA 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 13: UNFAIR ADVANTAGE & CLOSING       -->
+    <!-- ========================================== -->
+    <div class="slide theme-dark" data-slide="13">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">COMPETITIVE MOAT & THE ASK</div>
+          <h2 style="color: #FFF;">Why VERTA Wins & Our Acceleration Ask</h2>
+          <div class="slide-subtitle" style="color: #A3B899;">Defensible competitive moats paired with targeted capital allocation.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="grid-2">
+          <!-- 5 Unfair Advantages -->
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(82,183,136,0.25); border-radius: 10px; padding: 16px;">
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--mint); margin-bottom: 10px;">
+              🛡️ 5 Unfair Advantages (Lean Canvas):
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.82rem; color: #E8F5E9;">
+              <div>• <strong>Fully Integrated System:</strong> Hardware + Service + Data + Community in 1 solution.</div>
+              <div>• <strong>Water-Efficient Biomaterial Design:</strong> Easy installation in rugged terrains.</div>
+              <div>• <strong>Ecological Intelligence:</strong> Driven by local soil data (no arbitrary planting).</div>
+              <div>• <strong>Local Caretaker Network:</strong> Dedicated community stewards with fair wages.</div>
+              <div>• <strong>Outcome-Based Model:</strong> Guaranteed tree growth data for regulatory filing.</div>
+            </div>
+          </div>
+
+          <!-- The Ask & Closing -->
+          <div style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(82,183,136,0.25); border-radius: 10px; padding: 16px;">
+              <div style="font-size: 0.95rem; font-weight: 700; color: var(--mint-light); margin-bottom: 6px;">
+                🚀 The Ask: Rp 150,000,000 (~$10,000)
+              </div>
+              <div style="font-size: 0.8rem; color: #D8F3DC; line-height: 1.4;">
+                • <strong>40%:</strong> Field Pilot of 2,000 seedlings with inaugural enterprise B2B partner.<br>
+                • <strong>35%:</strong> Semi-automated hydraulic press mold (reduces COGS to Rp 12,000).<br>
+                • <strong>25%:</strong> ISO/SNI biodegradability lab certifications & offline app upgrade.
+              </div>
+            </div>
+
+            <div style="border-left: 3px solid var(--mint); padding-left: 14px; margin-top: 12px;">
+              <div style="font-size: 1.05rem; font-weight: 700; color: #FFF; font-style: italic;">
+                “Together, let us build real, enduring forests—not just ceremonial planting events.”
+              </div>
+              <div style="font-size: 0.8rem; color: #A3B899; margin-top: 4px;">
+                Team VERTA • GAYATAMA Lean Canvas Competition
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- APPENDIX A: SUPPLY CHAIN & MANUFACTURING   -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="14">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">APPENDIX A • Q&A DEFENSE</div>
+          <h2>Coconut Coir Supply Chain & Eco-Friendly Manufacturing</h2>
+          <div class="slide-subtitle">Operational feasibility of raw local material sourcing and production scalability.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">1. Feedstock Sourcing & Supply Security</div>
+            <div class="card-body" style="margin-top: 8px;">
+              • Indonesia is the world's largest coconut producer (vast coir waste abundance).<br>
+              • Secured MoUs with 3 regional smallholder coconut de-husking cooperatives.<br>
+              • Stable feedstock purchase price at Rp 1,500 – Rp 2,500 / kg.<br>
+              • Creates economic value from agricultural waste traditionally burnt in fields.
+            </div>
+          </div>
+          <div class="card highlight">
+            <div class="card-title">2. Green Manufacturing Process</div>
+            <div class="card-body" style="margin-top: 8px;">
+              • <strong>Fiber Extraction & Cleaning:</strong> Mechanical separation of coir and cocopeat.<br>
+              • <strong>Natural Binder Formulation:</strong> Liquid cassava starch and natural rubber latex.<br>
+              • <strong>Warm-Press Hydraulic Molding:</strong> Compression at 60–80°C (zero toxic chemistry).<br>
+              • <strong>Thin Beeswax Sealing:</strong> Protective anti-evaporation barrier application.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- APPENDIX B: OFFLINE-FIRST ARCHITECTURE     -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="15">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">APPENDIX B • Q&A DEFENSE</div>
+          <h2>Offline-First Mobile Architecture & Data Pipeline</h2>
+          <div class="slide-subtitle">Technical blueprint for logging field data in remote forests without cellular connectivity.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="flow-steps" style="margin-bottom: 20px;">
+          <div class="flow-item">
+            <div class="flow-num">1. Scan QR</div>
+            <div class="flow-title">Laser-Engraved Tag</div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">Affixed to tree stake</div>
+          </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-item active-step">
+            <div class="flow-num">2. Offline Input</div>
+            <div class="flow-title">Local SQLite Storage</div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">Height, photo, GPS stored locally</div>
+          </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-item">
+            <div class="flow-num">3. Auto Sync</div>
+            <div class="flow-title">Cloud Synchronization</div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">When device reconnects at basecamp</div>
+          </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-item active-step">
+            <div class="flow-num">4. Client Web</div>
+            <div class="flow-title">Executive Dashboard</div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">One-Click POJK 51 ESG Report</div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+            <strong>Data Integrity & Anti-Tampering:</strong> Photos are cryptographically locked with hardware GPS coordinates and immutable timestamps, preventing false or manipulated planting logs by field contractors.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- APPENDIX C: 10-15% SAMPLING METHODOLOGY    -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="16">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">APPENDIX C • Q&A DEFENSE</div>
+          <h2>10%–15% Stratified Random Sampling Methodology</h2>
+          <div class="slide-subtitle">Operational efficiency for multi-thousand hectare reforestation based on certified forestry statistics.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">Why Adopt Random Sampling?</div>
+            <div class="card-body" style="margin-top: 8px;">
+              • Auditing 100,000 trees individually every month is cost-prohibitive.<br>
+              • Adopts internationally recognized <em>Stratified Random Sampling</em> standards.<br>
+              • Divides plantation terrain into uniform 1–2 hectare blocks.<br>
+              • Audits 10%–15% randomly designated trees per block on monthly inspection cycles.
+            </div>
+          </div>
+          <div class="card highlight">
+            <div class="card-title">Statistical Confidence & Rigor</div>
+            <div class="card-body" style="margin-top: 8px;">
+              • <strong>Confidence Level:</strong> ≥95%.<br>
+              • <strong>Margin of Error:</strong> Under ±3.5%.<br>
+              • <strong>Field Operational Savings:</strong> Reduces routine monitoring overhead by 85%.<br>
+              • <strong>ESG Compliance:</strong> Formally recognized by independent sustainability auditing firms.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- APPENDIX D: FINANCIAL STATEMENT            -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="17">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">APPENDIX D • Q&A DEFENSE</div>
+          <h2>3-Year Pro Forma Income Statement & Break-Even Analysis</h2>
+          <div class="slide-subtitle">Detailed financial projections and operational break-even validation.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <table class="deck-table" style="font-size: 0.8rem;">
+          <thead>
+            <tr>
+              <th>Financial Metric (in Million IDR)</th>
+              <th>Year 1 (2026)</th>
+              <th>Year 2 (2027)</th>
+              <th>Year 3 (2028)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="font-weight: bold; background: #F8FAF9;">
+              <td>Total Revenue (Unit Sales & Turnkey Contracts)</td>
+              <td>Rp 1,100 ($71K)</td>
+              <td>Rp 3,500 ($225K)</td>
+              <td>Rp 9,800 ($632K)</td>
+            </tr>
+            <tr>
+              <td>Cost of Goods Sold (COGS / Direct Production)</td>
+              <td>(Rp 520)</td>
+              <td>(Rp 1,575)</td>
+              <td>(Rp 4,214)</td>
+            </tr>
+            <tr class="verta-row">
+              <td>Gross Profit</td>
+              <td>Rp 580 (52.7%)</td>
+              <td>Rp 1,925 (55.0%)</td>
+              <td>Rp 5,586 (57.0%)</td>
+            </tr>
+            <tr>
+              <td>Operating Expenses (R&D, Sales, Field Caretakers)</td>
+              <td>(Rp 450)</td>
+              <td>(Rp 950)</td>
+              <td>(Rp 2,100)</td>
+            </tr>
+            <tr>
+              <td>EBITDA (Operating Profit)</td>
+              <td>Rp 130</td>
+              <td>Rp 975</td>
+              <td>Rp 3,486</td>
+            </tr>
+            <tr style="font-weight: bold; background: #F0F9F4;">
+              <td>Net Profit (After Tax)</td>
+              <td style="color: var(--primary);">Rp 102 (9.2%)</td>
+              <td style="color: var(--primary);">Rp 780 (22.3%)</td>
+              <td style="color: var(--primary);">Rp 2,789 (28.5%)</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top: 10px; font-size: 0.74rem; background: #FFF; padding: 8px 14px; border-radius: 6px; border: 1px solid var(--border-color); display: flex; justify-content: space-between;">
+          <span><strong>Break-Even Point (BEP):</strong> Reached at Month 14 of commercial operations.</span>
+          <span><strong>Fixed Costs:</strong> Rp 240M / Year</span>
+          <span><strong>Contribution Margin:</strong> Rp 20,000 / unit</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- APPENDIX E: PESTLE ANALYSIS                 -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="18">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">APPENDIX E • Q&A DEFENSE</div>
+          <h2>Strategic Macro-Environmental Analysis (PESTLE)</h2>
+          <div class="slide-subtitle">Macroeconomic and regulatory catalysts accelerating VERTA's commercial adoption.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="grid-6">
+          <div class="card" style="padding: 12px;">
+            <div style="font-size: 0.75rem; font-weight: bold; color: var(--primary);">🏛️ Political</div>
+            <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 4px;">State commitment to FOLU Net Sink 2030 and mandatory 31.89% unconditional NDC carbon reduction targets.</div>
+          </div>
+          <div class="card" style="padding: 12px;">
+            <div style="font-size: 0.75rem; font-weight: bold; color: var(--secondary);">💰 Economic</div>
+            <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 4px;">Expanding corporate ESG capital and the launch of the Indonesia Carbon Exchange (IDXCarbon).</div>
+          </div>
+          <div class="card" style="padding: 12px;">
+            <div style="font-size: 0.75rem; font-weight: bold; color: var(--accent);">👥 Social</div>
+            <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 4px;">Need for green rural jobs; forest caretaking provides alternative livelihoods that prevent illegal logging and fires.</div>
+          </div>
+          <div class="card" style="padding: 12px;">
+            <div style="font-size: 0.75rem; font-weight: bold; color: var(--mint);">📲 Technological</div>
+            <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 4px;">Widespread rural smartphone penetration enables offline-first mobile data logging without cellular infrastructure.</div>
+          </div>
+          <div class="card" style="padding: 12px;">
+            <div style="font-size: 0.75rem; font-weight: bold; color: #1E3A8A;">⚖️ Legal</div>
+            <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 4px;">Mandatory POJK No. 51/2017 sustainability disclosure; anti-greenwashing penalties for unsubstantiated claims.</div>
+          </div>
+          <div class="card" style="padding: 12px;">
+            <div style="font-size: 0.75rem; font-weight: bold; color: var(--danger);">🌍 Environmental</div>
+            <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 4px;">Severe El Niño droughts demand passive water-retaining biomaterial tech across 14M Ha of degraded land.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- APPENDIX F: TOWS STRATEGIC MATRIX          -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="19">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">APPENDIX F • Q&A DEFENSE</div>
+          <h2>Actionable Execution Matrix (TOWS Matrix)</h2>
+          <div class="slide-subtitle">Strategic action plan capitalizing on strengths & opportunities to neutralize weaknesses & threats.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="grid-2">
+          <!-- SO & WO -->
+          <div class="card highlight">
+            <div style="font-size: 0.85rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">
+              🚀 SO Strategies (Growth)
+            </div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 12px;">
+              • Pitch turnkey reboisasi with verified POJK 51 ESG guarantees directly to listed energy & mining corporations.<br>
+              • Leverage abundant local coir waste to rapidly scale production for multi-hectare contracts.
+            </div>
+
+            <div style="font-size: 0.85rem; font-weight: 800; color: var(--secondary); margin-bottom: 6px;">
+              ⚙️ WO Strategies (Development)
+            </div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">
+              • Deploy acceleration funding into hydraulic press tooling to boost automated factory output.<br>
+              • Lock long-term supply agreements with smallholder coconut cooperatives to hedge raw material prices.
+            </div>
+          </div>
+
+          <!-- ST & WT -->
+          <div class="card">
+            <div style="font-size: 0.85rem; font-weight: 800; color: var(--accent); margin-bottom: 6px;">
+              🛡️ ST Strategies (Diversification)
+            </div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 12px;">
+              • Mobilize Forest Caretakers for scheduled water refills during extreme prolonged droughts.<br>
+              • Educate corporate clients on the hidden 60%–80% financial loss inherent in cheap conventional planting.
+            </div>
+
+            <div style="font-size: 0.85rem; font-weight: 800; color: var(--danger); margin-bottom: 6px;">
+              🔒 WT Strategies (Defense)
+            </div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">
+              • Build an ultra-intuitive, icon-driven mobile UI tailored for non-tech-savvy rural field workers.<br>
+              • Formulate natural neem extract and beeswax treatments to safeguard stored coir from termite damage.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- APPENDIX G: RISK & MITIGATION              -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="20">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-event">APPENDIX G • Q&A DEFENSE</div>
+          <h2>Field Risk Assessment & Mitigation Strategies</h2>
+          <div class="slide-subtitle">Operational readiness addressing prospective environmental and logistical challenges.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <div class="grid-3">
+          <div class="card" style="border-top: 3px solid var(--danger);">
+            <div class="card-title" style="font-size: 0.95rem;">1. Severe Drought</div>
+            <div style="font-size: 0.72rem; color: var(--danger); font-weight: bold; margin: 4px 0;">RISK: Water reservoir dries prematurely</div>
+            <div class="card-body" style="font-size: 0.8rem; margin-top: 6px;">
+              <strong>Mitigation Strategy:</strong><br>
+              Automated dashboard alerts trigger proactive refilling protocols for local <em>Forest Caretakers</em> before soil moisture hits permanent wilting points.
+            </div>
+          </div>
+
+          <div class="card" style="border-top: 3px solid var(--secondary);">
+            <div class="card-title" style="font-size: 0.95rem;">2. Termite & Pest Attacks</div>
+            <div style="font-size: 0.72rem; color: var(--secondary); font-weight: bold; margin: 4px 0;">RISK: Coir degrades prematurely</div>
+            <div class="card-body" style="font-size: 0.8rem; margin-top: 6px;">
+              <strong>Mitigation Strategy:</strong><br>
+              Coir fibers pre-treated with organic neem leaf extract (<em>Azadirachta indica</em>) and natural beeswax, serving as eco-friendly, biodegradable insect repellents.
+            </div>
+          </div>
+
+          <div class="card" style="border-top: 3px solid var(--primary);">
+            <div class="card-title" style="font-size: 0.95rem;">3. Feedstock Volatility</div>
+            <div style="font-size: 0.72rem; color: var(--primary); font-weight: bold; margin: 4px 0;">RISK: Seasonal coconut price hikes</div>
+            <div class="card-body" style="font-size: 0.8rem; margin-top: 6px;">
+              <strong>Mitigation Strategy:</strong><br>
+              Long-term exclusive supply agreements (MoUs) with 3 regional coconut cooperatives featuring price caps and dry buffer stock warehousing.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========================================== -->
+  <!-- NAVIGATION CONTROLS (BOTTOM FLOATING BAR) -->
+  <!-- ========================================== -->
+  <div id="nav-controls">
+    <button class="nav-btn" id="prev-btn" title="Previous Slide (← / Backspace)">◀</button>
+    <div id="slide-counter">Slide 1 / 20</div>
+    <button class="nav-btn" id="next-btn" title="Next Slide (→ / Space)">▶</button>
+    <div style="width: 1px; height: 16px; background: rgba(255,255,255,0.2); margin: 0 4px;"></div>
+    <button class="nav-btn" id="overview-btn" title="Toggle Slide Overview (O)">🗂️</button>
+    <button class="nav-btn" id="fullscreen-btn" title="Toggle Fullscreen (F)">⛶</button>
+    <button class="nav-btn" id="print-btn" title="Print / Export to PDF (Ctrl+P)" onclick="window.print()">🖨️</button>
+  </div>
+
+  <!-- OVERVIEW DRAWER MODAL -->
+  <div id="overview-modal">
+    <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto 20px;">
+      <h3 style="color: #FFF; font-size: 1.3rem;">VERTA Presentation Slide Index</h3>
+      <button class="nav-btn" id="close-overview-btn" style="font-size: 1.4rem;">✖</button>
+    </div>
+    <div class="overview-grid" id="overview-grid"></div>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 1;
+
+    const counter = document.getElementById('slide-counter');
+    const progressBar = document.getElementById('progress-bar');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    const overviewBtn = document.getElementById('overview-btn');
+    const closeOverviewBtn = document.getElementById('close-overview-btn');
+    const overviewModal = document.getElementById('overview-modal');
+    const overviewGrid = document.getElementById('overview-grid');
+
+    // Slide Titles for Overview
+    const slideTitles = [
+      "1. Cover & Identity",
+      "2. Problem & Urgency",
+      "3. Existing Alternatives",
+      "4. The Solution: VERTA",
+      "5. Unique Value Proposition",
+      "6. Prototype & Material Science",
+      "7. Digital Monitoring System",
+      "8. Customer Segments",
+      "9. Channels & Go-To-Market",
+      "10. Financials & Sales",
+      "11. KPIs & Triple Bottom Line",
+      "12. Founding Team",
+      "13. Unfair Advantage & The Ask",
+      "App A: Supply Chain & Factory",
+      "App B: Offline Architecture",
+      "App C: 10-15% Sampling",
+      "App D: Pro Forma Financials",
+      "App E: PESTLE Analysis",
+      "App F: TOWS Strategic Matrix",
+      "App G: Risk & Mitigation"
+    ];
+
+    // Build Overview Grid
+    slideTitles.forEach((title, index) => {
+      const item = document.createElement('div');
+      item.className = 'overview-item';
+      if (index === 0) item.classList.add('active');
+      item.innerHTML = `<h4>Slide ${index + 1}</h4><p>${title}</p>`;
+      item.onclick = () => {
+        goToSlide(index + 1);
+        overviewModal.classList.remove('show');
+      };
+      overviewGrid.appendChild(item);
+    });
+
+    function updateSlide() {
+      slides.forEach((s, idx) => {
+        if (idx + 1 === currentSlide) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+
+      // Update counter
+      counter.innerText = `Slide ${currentSlide} / ${totalSlides}`;
+      
+      // Update progress bar
+      const progressPercent = ((currentSlide - 1) / (totalSlides - 1)) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+
+      // Update overview active highlight
+      document.querySelectorAll('.overview-item').forEach((item, idx) => {
+        if (idx + 1 === currentSlide) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+
+    function goToSlide(n) {
+      if (n >= 1 && n <= totalSlides) {
+        currentSlide = n;
+        updateSlide();
+      }
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (overviewModal.classList.contains('show')) {
+        if (e.key === 'Escape' || e.key === 'o' || e.key === 'O') {
+          overviewModal.classList.remove('show');
+        }
+        return;
+      }
+
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'Backspace' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullscreen();
+      } else if (e.key === 'o' || e.key === 'O') {
+        overviewModal.classList.toggle('show');
+      } else if (e.key === 'Home') {
+        goToSlide(1);
+      } else if (e.key === 'End') {
+        goToSlide(totalSlides);
+      }
+    });
+
+    // Button Listeners
+    nextBtn.onclick = nextSlide;
+    prevBtn.onclick = prevSlide;
+    
+    overviewBtn.onclick = () => overviewModal.classList.add('show');
+    closeOverviewBtn.onclick = () => overviewModal.classList.remove('show');
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    fullscreenBtn.onclick = toggleFullscreen;
+
+    // Initial load
+    updateSlide();
+  </script>
+</body>
+</html>

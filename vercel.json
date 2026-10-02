@@ -1,5 +1,14 @@
 {
+  "cleanUrls": true,
   "rewrites": [
+    {
+      "source": "/pitchdeck",
+      "destination": "/pitchdeck.html"
+    },
+    {
+      "source": "/pitcdeck",
+      "destination": "/pitchdeck.html"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
