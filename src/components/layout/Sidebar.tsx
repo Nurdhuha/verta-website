@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Leaf, LayoutDashboard, BarChart3, FileText, Presentation, Settings, LogOut, X } from 'lucide-react';
+import { Leaf, LayoutDashboard, BarChart3, FileText, Settings, LogOut, X } from 'lucide-react';
 import './Sidebar.css';
 
 interface SidebarProps {
@@ -44,12 +44,6 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                 <FileText size={20} />
                 <span>Reports</span>
               </NavLink>
-            </li>
-            <li>
-              <a href="/pitchdeck" target="_blank" rel="noopener noreferrer" onClick={onClose}>
-                <Presentation size={20} />
-                <span>Pitch Deck ↗</span>
-              </a>
             </li>
           </ul>
         </div>
