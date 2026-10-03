@@ -45,7 +45,18 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      user-select: none;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+
+    ::selection {
+      background: rgba(82, 183, 136, 0.45);
+      color: inherit;
+    }
+
+    .theme-dark ::selection {
+      background: rgba(82, 183, 136, 0.6);
+      color: #FFFFFF;
     }
 
     /* Presentation Frame (16:9 Strict Ratio) */
@@ -59,6 +70,8 @@
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
       overflow: hidden;
       border-radius: 4px;
+      user-select: text;
+      -webkit-user-select: text;
     }
 
     .slide {
@@ -75,6 +88,8 @@
       transform: scale(0.99);
       background-color: var(--bg-slide-light);
       overflow: hidden;
+      user-select: text;
+      -webkit-user-select: text;
     }
 
     .slide.active {
@@ -336,6 +351,8 @@
       font-size: 0.85rem;
       z-index: 100;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     .nav-btn {
@@ -535,162 +552,165 @@
     </div>
 
     <!-- ============================================================== -->
-    <!-- SECTION 2: ANALYSIS (SLIDES 3 & 4)                              -->
+    <!-- SECTION 2: ANALYSIS (SLIDE 3)                                  -->
     <!-- ============================================================== -->
 
-    <!-- SLIDE 3: COMPETITIVE ANALYSIS & MARKET GAP -->
+    <!-- SLIDE 3: COMPETITIVE BENCHMARK & MARKET SIZING -->
     <div class="slide" data-slide="3">
       <div class="slide-header">
         <div class="slide-title-group">
           <div class="badge-group">
             <div class="badge-section">2. ANALYSIS</div>
-            <div class="badge-event">COMPETITIVE BENCHMARK</div>
+            <div class="badge-event">COMPETITION & MARKET SIZING</div>
           </div>
-          <h2>Competitive Analysis & Market Gap</h2>
-          <div class="slide-subtitle">A critical evaluation of 6 conventional market alternatives vs. the VERTA Integrated Ecosystem.</div>
+          <h2>Competitive Benchmark & Market Opportunity</h2>
+          <div class="slide-subtitle">Critical evaluation of 6 conventional methods vs. VERTA integrated with addressable market sizing & macro drivers.</div>
         </div>
       </div>
       <div class="slide-content">
-        <table class="deck-table">
-          <thead>
-            <tr>
-              <th>Alternative Method</th>
-              <th>Passive Water Reservoir</th>
-              <th>Herbivore / Sun Shield</th>
-              <th>100% Biodegradable</th>
-              <th>Audit-Ready ESG Data</th>
-              <th>Field Viability Evaluation</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Organic Mulch</strong></td>
-              <td><span class="badge-cross">❌ None</span></td>
-              <td><span class="badge-cross">❌ None</span></td>
-              <td><span class="badge-check">✅ Yes</span></td>
-              <td><span class="badge-cross">❌ None</span></td>
-              <td>Surface cover only; cannot store or passively diffuse water to roots.</td>
-            </tr>
-            <tr>
-              <td><strong>Manual Watering</strong></td>
-              <td><span class="badge-cross">❌ None</span></td>
-              <td><span class="badge-cross">❌ None</span></td>
-              <td><span class="badge-check">✅ N/A</span></td>
-              <td><span class="badge-cross">❌ Manual Logs</span></td>
-              <td>Prohibitive labor/logistics costs, massive water waste, unscalable in rugged forests.</td>
-            </tr>
-            <tr>
-              <td><strong>Synthetic Hydrogels</strong></td>
-              <td><span class="badge-check">✅ Yes</span></td>
-              <td><span class="badge-cross">❌ None</span></td>
-              <td><span class="badge-cross">❌ Chemical</span></td>
-              <td><span class="badge-cross">❌ None</span></td>
-              <td>Binds water temporarily but leaves non-degradable chemical polymer residues in soil.</td>
-            </tr>
-            <tr>
-              <td><strong>Drip Irrigation</strong></td>
-              <td><span class="badge-cross">⚠️ Needs Piping</span></td>
-              <td><span class="badge-cross">❌ None</span></td>
-              <td><span class="badge-cross">❌ Plastic Pipes</span></td>
-              <td><span class="badge-cross">❌ Disconnected</span></td>
-              <td>Complex plumbing and pump maintenance; entirely unsuited for remote forest terrain.</td>
-            </tr>
-            <tr>
-              <td><strong>Plastic Tree Shelters</strong></td>
-              <td><span class="badge-cross">❌ None</span></td>
-              <td><span class="badge-check">⚠️ Partial</span></td>
-              <td><span class="badge-cross">❌ Plastic Waste</span></td>
-              <td><span class="badge-cross">❌ None</span></td>
-              <td>Physical barrier only; zero hydration functionality and leaves persistent microplastic pollution.</td>
-            </tr>
-            <tr>
-              <td><strong>No System (Status Quo)</strong></td>
-              <td><span class="badge-cross">❌ None</span></td>
-              <td><span class="badge-cross">❌ None</span></td>
-              <td><span class="badge-check">✅ Natural</span></td>
-              <td><span class="badge-cross">❌ None</span></td>
-              <td>Most common corporate practice, yet yields lowest survival rate (20%–40%).</td>
-            </tr>
-            <tr class="verta-row">
-              <td><strong>VERTA Integrated Ecosystem</strong></td>
-              <td><span class="badge-check">✅ Passive Donut</span></td>
-              <td><span class="badge-check">✅ Bio PLA Chimney</span></td>
-              <td><span class="badge-check">✅ 100% Bio-based</span></td>
-              <td><span class="badge-check">✅ Offline SaaS</span></td>
-              <td><strong>Guarantees ≥85% sapling survival with tamper-proof POJK 51/2017 audit trails.</strong></td>
-            </tr>
-          </tbody>
-        </table>
+        <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 12px; height: 100%; min-height: 0;">
+          
+          <!-- Left Column: Competitive Benchmark Table -->
+          <div class="card" style="padding: 10px 12px; display: flex; flex-direction: column; min-height: 0;">
+            <div class="card-title" style="margin-bottom: 6px; font-size: 0.88rem;">Competitive Benchmark (6 Alternatives vs. VERTA)</div>
+            <div style="flex: 1; overflow: hidden; display: flex; flex-direction: column; justify-content: center;">
+              <table class="deck-table" style="font-size: 0.65rem;">
+                <thead>
+                  <tr>
+                    <th style="padding: 5px 6px;">Alternative Method</th>
+                    <th style="padding: 5px 6px; text-align: center;">Passive Reservoir</th>
+                    <th style="padding: 5px 6px; text-align: center;">Bio Shield</th>
+                    <th style="padding: 5px 6px; text-align: center;">100% Bio</th>
+                    <th style="padding: 5px 6px; text-align: center;">ESG Data</th>
+                    <th style="padding: 5px 6px;">Field Viability Verdict</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding: 4px 6px;"><strong>Organic Mulch</strong></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ None</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ None</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-check">✅ Yes</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ None</span></td>
+                    <td style="padding: 4px 6px;">Surface cover only; cannot store or passively diffuse water.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 4px 6px;"><strong>Manual Watering</strong></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ None</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ None</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-check">✅ N/A</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ Manual</span></td>
+                    <td style="padding: 4px 6px;">Prohibitive labor/trucking cost, massive water waste.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 4px 6px;"><strong>Synthetic Hydrogels</strong></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-check">✅ Yes</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ None</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ Chemical</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ None</span></td>
+                    <td style="padding: 4px 6px;">Binds water temporarily; leaves persistent chemical residue.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 4px 6px;"><strong>Drip Irrigation</strong></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">⚠️ Piping</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ None</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ Plastic</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ Disconnected</span></td>
+                    <td style="padding: 4px 6px;">Complex plumbing & pumps; entirely unsuited for rugged terrain.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 4px 6px;"><strong>Tree Shelters</strong></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ None</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-check">⚠️ Partial</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ Plastic</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ None</span></td>
+                    <td style="padding: 4px 6px;">Physical shade only; zero hydration & microplastic waste.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 4px 6px;"><strong>No System (Status Quo)</strong></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ None</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ None</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-check">✅ Natural</span></td>
+                    <td style="padding: 4px 6px; text-align: center;"><span class="badge-cross">❌ None</span></td>
+                    <td style="padding: 4px 6px;">Standard corporate practice; 20%–40% survival rate.</td>
+                  </tr>
+                  <tr class="verta-row">
+                    <td style="padding: 5px 6px;"><strong>VERTA Ecosystem</strong></td>
+                    <td style="padding: 5px 6px; text-align: center;"><span class="badge-check">✅ Passive</span></td>
+                    <td style="padding: 5px 6px; text-align: center;"><span class="badge-check">✅ Bio Chimney</span></td>
+                    <td style="padding: 5px 6px; text-align: center;"><span class="badge-check">✅ 100% Bio</span></td>
+                    <td style="padding: 5px 6px; text-align: center;"><span class="badge-check">✅ Offline SaaS</span></td>
+                    <td style="padding: 5px 6px;"><strong>Guarantees ≥85% survival with POJK 51/2017 audit trails.</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Right Column: Market Sizing + PESTLE Drivers -->
+          <div style="display: flex; flex-direction: column; gap: 8px; min-height: 0;">
+            <!-- Market Sizing Card -->
+            <div class="card" style="padding: 8px 10px;">
+              <div class="card-title" style="margin-bottom: 5px; font-size: 0.84rem;">Market Sizing (TAM - SAM - SOM)</div>
+              <div style="display: flex; flex-direction: column; gap: 5px;">
+                <div style="padding: 5px 8px; background: #F8FAF9; border-radius: 5px; border-left: 3px solid var(--primary);">
+                  <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <span style="font-size: 0.62rem; color: var(--text-muted); font-weight: bold;">TAM (TOTAL ADDRESSABLE MARKET)</span>
+                    <span style="font-size: 0.95rem; font-weight: 800; color: var(--primary);">Rp 12,6 Triliun (~$810M)</span>
+                  </div>
+                  <div style="font-size: 0.65rem; color: var(--text-muted);">14M Ha lahan kritis & alokasi anggaran CSR/TJSL korporasi se-Indonesia.</div>
+                </div>
+                <div style="padding: 5px 8px; background: #F8FAF9; border-radius: 5px; border-left: 3px solid var(--secondary);">
+                  <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <span style="font-size: 0.62rem; color: var(--text-muted); font-weight: bold;">SAM (SERVICEABLE AVAILABLE MARKET)</span>
+                    <span style="font-size: 0.95rem; font-weight: 800; color: var(--secondary);">Rp 1,8 Triliun (~$116M)</span>
+                  </div>
+                  <div style="font-size: 0.65rem; color: var(--text-muted);">Perusahaan terbuka energi, tambang & perbankan wajib POJK 51/2017.</div>
+                </div>
+                <div style="padding: 5px 8px; background: #F0F9F4; border-radius: 5px; border-left: 3px solid var(--mint);">
+                  <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <span style="font-size: 0.62rem; color: var(--mint); font-weight: bold;">SOM (SERVICEABLE OBTAINABLE MARKET - 3 YR)</span>
+                    <span style="font-size: 0.95rem; font-weight: 800; color: var(--accent);">Rp 36 Miliar (~$2.3M)</span>
+                  </div>
+                  <div style="font-size: 0.65rem; color: var(--text-muted);">Target penetrasi 2% korporasi Tier-1 di Jawa & Kalimantan Timur.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PESTLE Drivers Card -->
+            <div class="card highlight" style="padding: 8px 10px;">
+              <div class="card-title" style="margin-bottom: 4px; font-size: 0.82rem;">PESTLE Macro Drivers</div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px; font-size: 0.68rem; line-height: 1.25;">
+                <div style="padding: 4px 6px; background: #FFF; border-radius: 4px; border: 1px solid var(--border-color);">
+                  <strong>🏛️ Political:</strong> FOLU Net Sink 2030 & target reduksi 31.89% NDC.
+                </div>
+                <div style="padding: 4px 6px; background: #FFF; border-radius: 4px; border: 1px solid var(--border-color);">
+                  <strong>💰 Economic:</strong> Bursa IDXCarbon & permintaan kredit karbon terverifikasi.
+                </div>
+                <div style="padding: 4px 6px; background: #FFF; border-radius: 4px; border: 1px solid var(--border-color);">
+                  <strong>👥 Social:</strong> Lapangan kerja hijau bagi warga desa hutan (+25% income).
+                </div>
+                <div style="padding: 4px 6px; background: #FFF; border-radius: 4px; border: 1px solid var(--border-color);">
+                  <strong>📲 Tech:</strong> Offline-first SQLite sync di area pedalaman minim sinyal.
+                </div>
+                <div style="padding: 4px 6px; background: #FFF; border-radius: 4px; border: 1px solid var(--border-color); grid-column: span 2;">
+                  <strong>⚖️ Legal & Env:</strong> Mandat POJK 51/2017 & antisipasi kekeringan El Niño ekstrem.
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
       </div>
     </div>
 
-    <!-- SLIDE 4: MARKET OPPORTUNITY & MACRO ANALYSIS -->
+    <!-- ============================================================== -->
+    <!-- SECTION 3: STRATEGY (SLIDES 4 & 5)                              -->
+    <!-- ============================================================== -->
+
+    <!-- SLIDE 4: SOLUTION STRATEGY & UVP -->
     <div class="slide" data-slide="4">
-      <div class="slide-header">
-        <div class="slide-title-group">
-          <div class="badge-group">
-            <div class="badge-section">2. ANALYSIS</div>
-            <div class="badge-event">MARKET & PESTLE</div>
-          </div>
-          <h2>Market Sizing & Macro-Environmental Drivers</h2>
-          <div class="slide-subtitle">Massive market potential catalyzed by green regulatory mandates and national climate commitments.</div>
-        </div>
-      </div>
-      <div class="slide-content">
-        <div class="grid-2">
-          <!-- Market Sizing -->
-          <div class="card">
-            <div class="card-title" style="margin-bottom: 8px;">Market Sizing (TAM - SAM - SOM)</div>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="padding: 7px 10px; background: #F8FAF9; border-radius: 6px; border-left: 3px solid var(--primary);">
-                <div style="font-size: 0.68rem; color: var(--text-muted); font-weight: bold;">TAM (TOTAL ADDRESSABLE MARKET)</div>
-                <div style="font-size: 1.15rem; font-weight: 800; color: var(--primary);">Rp 12.6 Trillion ($810M)</div>
-                <div style="font-size: 0.72rem; color: var(--text-muted);">Rehabilitation of 14M Ha critical land & nationwide corporate CSR/TJSL budgets.</div>
-              </div>
-              <div style="padding: 7px 10px; background: #F8FAF9; border-radius: 6px; border-left: 3px solid var(--secondary);">
-                <div style="font-size: 0.68rem; color: var(--text-muted); font-weight: bold;">SAM (SERVICEABLE AVAILABLE MARKET)</div>
-                <div style="font-size: 1.15rem; font-weight: 800; color: var(--secondary);">Rp 1.8 Trillion ($116M)</div>
-                <div style="font-size: 0.72rem; color: var(--text-muted);">Public energy, mining, and banking corporations mandated under POJK 51/2017.</div>
-              </div>
-              <div style="padding: 7px 10px; background: #F0F9F4; border-radius: 6px; border-left: 3px solid var(--mint);">
-                <div style="font-size: 0.68rem; color: var(--mint); font-weight: bold;">SOM (SERVICEABLE OBTAINABLE MARKET - 3 YR)</div>
-                <div style="font-size: 1.15rem; font-weight: 800; color: var(--accent);">Rp 36 Billion ($2.3M)</div>
-                <div style="font-size: 0.72rem; color: var(--text-muted);">Targeting 2% capture of Tier-1 B2B enterprises across Java & East Kalimantan.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- PESTLE Drivers -->
-          <div class="card highlight">
-            <div class="card-title" style="margin-bottom: 6px;">PESTLE Macro Drivers</div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.74rem;">
-              <div style="padding: 6px; background: #FFF; border-radius: 6px; border: 1px solid var(--border-color);">
-                <strong>🏛️ Political:</strong> Indonesia FOLU Net Sink 2030 & enhanced NDC target (31.89% emission cut).
-              </div>
-              <div style="padding: 6px; background: #FFF; border-radius: 6px; border: 1px solid var(--border-color);">
-                <strong>💰 Economic:</strong> Launch of IDXCarbon exchange creating demand for verified carbon credits.
-              </div>
-              <div style="padding: 6px; background: #FFF; border-radius: 6px; border: 1px solid var(--border-color);">
-                <strong>👥 Social:</strong> Forest village empowerment creating sustainable local green jobs.
-              </div>
-              <div style="padding: 6px; background: #FFF; border-radius: 6px; border: 1px solid var(--border-color);">
-                <strong>📲 Technological:</strong> Low-cost smartphones enabling offline-first field synchronization.
-              </div>
-              <div style="padding: 6px; background: #FFF; border-radius: 6px; border: 1px solid var(--border-color); grid-column: span 2;">
-                <strong>⚖️ Legal & Environmental:</strong> Mandatory POJK 51/2017 reporting & intensifying El Niño drought risks.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ============================================================== -->
-    <!-- SECTION 3: STRATEGY (SLIDES 5 & 6)                              -->
-    <!-- ============================================================== -->
-
-    <!-- SLIDE 5: SOLUTION STRATEGY & UVP -->
-    <div class="slide" data-slide="5">
       <div class="slide-header">
         <div class="slide-title-group">
           <div class="badge-group">
@@ -754,8 +774,8 @@
       </div>
     </div>
 
-    <!-- SLIDE 6: BUSINESS MODEL, UNIT ECONOMICS & MOATS -->
-    <div class="slide" data-slide="6">
+    <!-- SLIDE 5: BUSINESS MODEL, UNIT ECONOMICS & MOATS -->
+    <div class="slide" data-slide="5">
       <div class="slide-header">
         <div class="slide-title-group">
           <div class="badge-group">
@@ -773,27 +793,36 @@
             <div class="card-title" style="margin-bottom: 8px;">4 Revenue Streams</div>
             <div style="font-size: 0.76rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px;">
               <div><strong>1. Unit Sales:</strong> Direct B2B sale of single-use biodegradable VERTA Rings.</div>
-              <div><strong>2. Turnkey Reforestation:</strong> Comprehensive packages at Rp 85M/Ha (units + planting + 1-year care).</div>
-              <div><strong>3. Monitoring SaaS:</strong> Annual recurring retainer for real-time ESG analytics & audit reporting.</div>
-              <div><strong>4. Custom Co-Branding:</strong> Corporate sponsor branding laser-etched onto tree collars for CSR PR.</div>
+              <div><strong>2. Turnkey Reforestation:</strong> Kontrak penuh Rp 85.000.000 / Ha (Rp 85 Juta/Ha: 1.000 unit + bibit + 1 th rawat).</div>
+              <div><strong>3. Monitoring SaaS:</strong> Retainer langganan (Rp 15.000.000 / tahun) untuk analitik data & audit ESG.</div>
+              <div><strong>4. Custom Co-Branding:</strong> Cetak logo korporasi pada pelindung bibit untuk eksposur CSR.</div>
             </div>
           </div>
 
           <!-- Unit Economics -->
           <div class="card highlight">
             <div class="card-title" style="margin-bottom: 6px;">Healthy Unit Economics</div>
-            <div style="display: flex; flex-direction: column; gap: 6px; font-size: 0.78rem;">
-              <div style="background: #FFF; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-color);">
-                <div style="font-size: 0.65rem; color: var(--text-muted);">COGS PER UNIT</div>
-                <div style="font-size: 1.05rem; font-weight: 800; color: var(--danger);">Rp 18,000 (~$1.15)</div>
+            <div style="display: flex; flex-direction: column; gap: 5px; font-size: 0.78rem;">
+              <div style="background: #FFF; padding: 5px 8px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                  <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: bold;">HPP / COGS PER UNIT</span>
+                  <span style="font-size: 1rem; font-weight: 800; color: var(--danger);">Rp 18.000 (~$1.15)</span>
+                </div>
+                <div style="font-size: 0.63rem; color: var(--text-muted); margin-top: 2px;">
+                  Bahan Baku 40% (Rp 7.200) • Naker 25% (Rp 4.500) • Logistik 15% (Rp 2.700) • R&D & Ops 20% (Rp 3.600)
+                </div>
               </div>
-              <div style="background: #FFF; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-color);">
-                <div style="font-size: 0.65rem; color: var(--text-muted);">B2B SELLING PRICE</div>
-                <div style="font-size: 1.05rem; font-weight: 800; color: var(--primary);">Rp 38,000 (~$2.45)</div>
+              <div style="background: #FFF; padding: 5px 8px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                  <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: bold;">HARGA JUAL B2B</span>
+                  <span style="font-size: 1rem; font-weight: 800; color: var(--primary);">Rp 38.000 (~$2.45)</span>
+                </div>
+                <div style="font-size: 0.63rem; color: var(--accent); font-weight: 600; margin-top: 2px;">
+                  Margin Kotor: +Rp 20.000 per unit (52.6% Gross Margin)
+                </div>
               </div>
-              <div style="background: #F0F9F4; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--mint);">
-                <div style="font-size: 0.65rem; color: var(--mint);">GROSS PROFIT MARGIN</div>
-                <div style="font-size: 1.15rem; font-weight: 800; color: var(--accent);">52.6%</div>
+              <div style="background: #F0F9F4; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--mint); font-size: 0.68rem; color: var(--primary-dark);">
+                <strong>Target Efisiensi:</strong> Mesin pres hidrolik menurunkan HPP ke <strong>Rp 12.000</strong> (Margin <strong>68.4%</strong>).
               </div>
             </div>
           </div>
@@ -814,11 +843,11 @@
     </div>
 
     <!-- ============================================================== -->
-    <!-- SECTION 4: IMPLEMENTATION (SLIDES 7 & 8)                        -->
+    <!-- SECTION 4: IMPLEMENTATION (SLIDES 6 & 7)                        -->
     <!-- ============================================================== -->
 
-    <!-- SLIDE 7: PRODUCT & TECH IMPLEMENTATION -->
-    <div class="slide" data-slide="7">
+    <!-- SLIDE 6: PRODUCT & TECH IMPLEMENTATION -->
+    <div class="slide" data-slide="6">
       <div class="slide-header">
         <div class="slide-title-group">
           <div class="badge-group">
@@ -891,8 +920,8 @@
       </div>
     </div>
 
-    <!-- SLIDE 8: GO-TO-MARKET EXECUTION & TRACTION -->
-    <div class="slide" data-slide="8">
+    <!-- SLIDE 7: GO-TO-MARKET EXECUTION & TRACTION -->
+    <div class="slide" data-slide="7">
       <div class="slide-header">
         <div class="slide-title-group">
           <div class="badge-group">
@@ -939,113 +968,307 @@
       </div>
     </div>
 
+    <!-- SLIDE 8: KEY PERFORMANCE INDICATORS & QUANTITATIVE MEASUREMENT -->
+    <div class="slide" data-slide="8">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="badge-group">
+            <div class="badge-section">4. IMPLEMENTATION</div>
+            <div class="badge-event">KEY METRICS & KPIS</div>
+          </div>
+          <h2>Key Performance Indicators & Quantitative Measurement</h2>
+          <div class="slide-subtitle">Rigorous quantitative frameworks evaluating ecological survival, technological auditability, commercial traction, and socio-economic impact.</div>
+        </div>
+      </div>
+      <div class="slide-content">
+        <!-- 4 Core Quantitative KPI Dimension Cards -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 8px;">
+          
+          <!-- KPI 1: Ecological -->
+          <div class="card" style="padding: 10px 12px; border-top: 3px solid var(--primary);">
+            <div class="card-top" style="margin-bottom: 3px;">
+              <div class="card-icon" style="width: 24px; height: 24px; font-size: 0.8rem;">🌱</div>
+              <div class="card-title" style="font-size: 0.82rem;">1. Ekologis & Lapangan</div>
+            </div>
+            <div style="margin: 2px 0 4px;">
+              <span style="font-size: 1.15rem; font-weight: 800; color: var(--primary);">≥85%</span>
+              <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: 600;"> Survival Target</span>
+            </div>
+            <div class="card-body" style="font-size: 0.68rem; line-height: 1.35;">
+              • <strong>Tingkat Kelangsungan:</strong> ≥85% pada bln ke-6 & 12 (vs 20%–40% metode konvensional).<br>
+              • <strong>Konservasi Air:</strong> Hemat 70% volume air (4,5 L/bln vs 15 L manual truk).<br>
+              • <strong>Buffer Mandiri:</strong> 21–28 hari kelembaban akar tanpa presipitasi hujan.<br>
+              • <strong>Biodegradasi:</strong> 100% jadi humus subur dlm 12–18 bulan (ISO 17088).
+            </div>
+          </div>
+
+          <!-- KPI 2: Technology & Audit -->
+          <div class="card" style="padding: 10px 12px; border-top: 3px solid var(--mint);">
+            <div class="card-top" style="margin-bottom: 3px;">
+              <div class="card-icon" style="width: 24px; height: 24px; font-size: 0.8rem;">📲</div>
+              <div class="card-title" style="font-size: 0.82rem;">2. Teknologi & Integritas Audit</div>
+            </div>
+            <div style="margin: 2px 0 4px;">
+              <span style="font-size: 1.15rem; font-weight: 800; color: var(--mint);">10%–15%</span>
+              <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: 600;"> Sampling Cochran</span>
+            </div>
+            <div class="card-body" style="font-size: 0.68rem; line-height: 1.35;">
+              • <strong>Digital Birth Tag:</strong> 100% pohon ber-QR tahan cuaca & koordinat GPS sub-meter.<br>
+              • <strong>Validitas Statistik:</strong> Sampling Cochran (95% Confidence, ≤5% Margin of Error).<br>
+              • <strong>Efisiensi Audit:</strong> Pangkas -85% biaya inspeksi vs sensus manual 100%.<br>
+              • <strong>Sync Offline:</strong> Sinkronisasi SQLite ke Cloud ≤24 jam saat online.
+            </div>
+          </div>
+
+          <!-- KPI 3: Commercial & Traction -->
+          <div class="card" style="padding: 10px 12px; border-top: 3px solid var(--secondary);">
+            <div class="card-top" style="margin-bottom: 3px;">
+              <div class="card-icon" style="width: 24px; height: 24px; font-size: 0.8rem;">📈</div>
+              <div class="card-title" style="font-size: 0.82rem;">3. Komersial & Finansial</div>
+            </div>
+            <div style="margin: 2px 0 4px;">
+              <span style="font-size: 1.15rem; font-weight: 800; color: var(--secondary);">≥3.5x</span>
+              <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: 600;"> LTV / CAC Ratio</span>
+            </div>
+            <div class="card-body" style="font-size: 0.68rem; line-height: 1.35;">
+              • <strong>LTV/CAC:</strong> ≥3.5x (Target CAC Rp 25 Jt vs LTV Rp 95 Jt+ per korporat B2B).<br>
+              • <strong>Retensi B2B:</strong> ≥75% renewal tahunan didorong kepatuhan POJK 51/2017.<br>
+              • <strong>Gross Margin:</strong> 52.6% (Y1, HPP Rp 18k) → 68.4% (Y3, HPP Rp 12k pres hidrolik).<br>
+              • <strong>BEP Bulan ke-14:</strong> Fixed cost Rp 20 Jt/bln, operasional cash-flow positif.
+            </div>
+          </div>
+
+          <!-- KPI 4: Social & Impact -->
+          <div class="card highlight" style="padding: 10px 12px; border-top: 3px solid var(--accent);">
+            <div class="card-top" style="margin-bottom: 3px;">
+              <div class="card-icon" style="width: 24px; height: 24px; font-size: 0.8rem;">🌍</div>
+              <div class="card-title" style="font-size: 0.82rem;">4. Dampak Sosial & ESG</div>
+            </div>
+            <div style="margin: 2px 0 4px;">
+              <span style="font-size: 1.15rem; font-weight: 800; color: var(--accent);">650k+</span>
+              <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: 600;"> Pohon Hidup Y5</span>
+            </div>
+            <div class="card-body" style="font-size: 0.68rem; line-height: 1.35;">
+              • <strong>North Star Metric:</strong> Pohon Hidup Terverifikasi (18k Y1 → 650k Y5).<br>
+              • <strong>Income Desa:</strong> Kenaikan pendapatan +25%–40% bagi 1.200 warga lokal.<br>
+              • <strong>Restorasi Lahan:</strong> 20 Ha (Y1) → 750+ Ha (Y5) kanopi kritis pulih.<br>
+              • <strong>Serapan Karbon:</strong> 2.850 tCO₂ (Y1) → 150.000+ tCO₂ akumulatif (Y5).
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Quantitative Formulas & Validation Strip -->
+        <div style="display: grid; grid-template-columns: 1.25fr 1.25fr 1fr; gap: 8px;">
+          <div style="background: #F0F9F4; border: 1px solid var(--mint); border-radius: 8px; padding: 7px 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+              <span style="font-size: 0.64rem; font-weight: 800; color: var(--primary); text-transform: uppercase;">Formula 1: Cochran Finite Population Sampling</span>
+              <span class="pill pill-mint" style="font-size: 0.55rem; padding: 1px 6px;">Audit Validity</span>
+            </div>
+            <div style="font-family: monospace; font-size: 0.70rem; color: var(--primary-dark); font-weight: 700; margin: 2px 0;">n = [N·z²·p·(1-p)] / [e²·(N-1) + z²·p·(1-p)]</div>
+            <div style="font-size: 0.62rem; color: var(--text-muted); line-height: 1.25;">
+              z=1.96 (95% CI), p=0.5, e=0.05 → Cukup audit 384 pohon dari 10.000 bibit (-85% biaya inspeksi lapangan, 100% lolos audit POJK 51).
+            </div>
+          </div>
+          <div style="background: #F0F9F4; border: 1px solid var(--mint); border-radius: 8px; padding: 7px 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+              <span style="font-size: 0.64rem; font-weight: 800; color: var(--primary); text-transform: uppercase;">Formula 2: Unit Economics & Margin Expansion</span>
+              <span class="pill pill-mint" style="font-size: 0.55rem; padding: 1px 6px;">Scale Moat</span>
+            </div>
+            <div style="font-family: monospace; font-size: 0.70rem; color: var(--primary-dark); font-weight: 700; margin: 2px 0;">Gross Margin = (Selling Price - COGS) / Selling Price</div>
+            <div style="font-size: 0.62rem; color: var(--text-muted); line-height: 1.25;">
+              Y1: (Rp 38k - Rp 18k)/Rp 38k = <strong>52.6%</strong> → Y3 (Mesin Pres Hidrolik): (Rp 38k - Rp 12k)/Rp 38k = <strong>68.4%</strong> (+15.8% ekspansi).
+            </div>
+          </div>
+          <div style="background: #F0F9F4; border: 1px solid var(--mint); border-radius: 8px; padding: 7px 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+              <span style="font-size: 0.64rem; font-weight: 800; color: var(--primary); text-transform: uppercase;">Formula 3: Water Conservation Index</span>
+              <span class="pill pill-mint" style="font-size: 0.55rem; padding: 1px 6px;">Passive Tech</span>
+            </div>
+            <div style="font-family: monospace; font-size: 0.70rem; color: var(--primary-dark); font-weight: 700; margin: 2px 0;">Efisiensi = (15,0 L - 4,5 L) / 15,0 L = 70.0%</div>
+            <div style="font-size: 0.62rem; color: var(--text-muted); line-height: 1.25;">
+              Difusi kapiler sabut kelapa memangkas 10,5 L air/bibit/bulan; meniadakan armada truk tangki air di medan terjal.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- ============================================================== -->
     <!-- SECTION 5: CONCLUSION (SLIDES 9 & 10)                           -->
     <!-- ============================================================== -->
 
-    <!-- SLIDE 9: FINANCIAL PROJECTIONS & BREAK-EVEN ANALYSIS -->
+    <!-- SLIDE 9: FINANCIAL PROJECTIONS & 5-YEAR BUSINESS SUSTAINABILITY (2026–2030) -->
     <div class="slide" data-slide="9">
       <div class="slide-header">
         <div class="slide-title-group">
           <div class="badge-group">
             <div class="badge-section">5. CONCLUSION</div>
-            <div class="badge-event">FINANCIALS & BEP</div>
+            <div class="badge-event">FINANCIALS & 5-YEAR SUSTAINABILITY</div>
           </div>
-          <h2>3-Year Pro Forma & Break-Even Feasibility</h2>
-          <div class="slide-subtitle">Disciplined commercial growth trajectory achieving operational profitability by Month 14.</div>
+          <h2>Financial Projections & 5-Year Business Sustainability (2026–2030)</h2>
+          <div class="slide-subtitle">Disciplined pro forma financials, break-even feasibility at Month 14, and 5-year multi-pillar venture continuity.</div>
         </div>
       </div>
       <div class="slide-content">
-        <div class="grid-2">
-          <!-- Financial Table Card -->
-          <div class="card">
-            <div class="card-title" style="margin-bottom: 6px;">3-Year Pro Forma Income Statement</div>
-            <table class="deck-table" style="font-size: 0.74rem;">
+        <!-- Top: 5-Year Trajectory Milestones Bar -->
+        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; margin-bottom: 8px;">
+          
+          <div class="card" style="padding: 6px 8px; border-top: 3px solid var(--primary);">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <span style="font-size: 0.63rem; font-weight: 800; color: var(--primary);">YR 1 (2026)</span>
+              <span class="pill" style="font-size: 0.54rem; padding: 1px 5px;">Validation</span>
+            </div>
+            <div style="font-size: 0.90rem; font-weight: 800; color: var(--primary-dark); margin: 1px 0;">Rp 1,1 M</div>
+            <div style="font-size: 0.60rem; color: var(--text-muted); line-height: 1.2;">
+              • 18k Trees (20 Ha)<br>
+              • Net: Rp 102 Jt (9.2%)<br>
+              • Jabar Pilot & Formula
+            </div>
+          </div>
+
+          <div class="card" style="padding: 6px 8px; border-top: 3px solid var(--secondary);">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <span style="font-size: 0.63rem; font-weight: 800; color: var(--secondary);">YR 2 (2027)</span>
+              <span class="pill" style="font-size: 0.54rem; padding: 1px 5px; background: #FFF4E5; color: #B45309;">BEP Mo-14</span>
+            </div>
+            <div style="font-size: 0.90rem; font-weight: 800; color: var(--primary-dark); margin: 1px 0;">Rp 3,5 M</div>
+            <div style="font-size: 0.60rem; color: var(--text-muted); line-height: 1.2;">
+              • 60k Trees (65 Ha)<br>
+              • Net: Rp 780 Jt (22.3%)<br>
+              • Pres Semi-Otomatis
+            </div>
+          </div>
+
+          <div class="card" style="padding: 6px 8px; border-top: 3px solid var(--mint);">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <span style="font-size: 0.63rem; font-weight: 800; color: var(--accent);">YR 3 (2028)</span>
+              <span class="pill pill-mint" style="font-size: 0.54rem; padding: 1px 5px;">Scale Moat</span>
+            </div>
+            <div style="font-size: 0.90rem; font-weight: 800; color: var(--primary-dark); margin: 1px 0;">Rp 9,8 M</div>
+            <div style="font-size: 0.60rem; color: var(--text-muted); line-height: 1.2;">
+              • 180k Trees (200 Ha)<br>
+              • Net: Rp 2,78 M (28.5%)<br>
+              • HPP Turun Rp 12.000
+            </div>
+          </div>
+
+          <div class="card" style="padding: 6px 8px; border-top: 3px solid #2D6A4F;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <span style="font-size: 0.63rem; font-weight: 800; color: #2D6A4F;">YR 4 (2029)</span>
+              <span class="pill" style="font-size: 0.54rem; padding: 1px 5px; background: #E8F5E9; color: #2D6A4F;">Carbon API</span>
+            </div>
+            <div style="font-size: 0.90rem; font-weight: 800; color: var(--primary-dark); margin: 1px 0;">Rp 18,5 M</div>
+            <div style="font-size: 0.60rem; color: var(--text-muted); line-height: 1.2;">
+              • 350k Trees (400 Ha)<br>
+              • Net: Rp 5,73 M (31.0%)<br>
+              • Integrasi IDXCarbon
+            </div>
+          </div>
+
+          <div class="card highlight" style="padding: 6px 8px; border-top: 3px solid var(--accent);">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <span style="font-size: 0.63rem; font-weight: 800; color: var(--accent);">YR 5 (2030)</span>
+              <span class="pill pill-mint" style="font-size: 0.54rem; padding: 1px 5px; font-weight: 800;">FOLU 2030</span>
+            </div>
+            <div style="font-size: 0.90rem; font-weight: 800; color: var(--primary-dark); margin: 1px 0;">Rp 32,0 M</div>
+            <div style="font-size: 0.60rem; color: var(--text-muted); line-height: 1.2;">
+              • 650k Trees (750+ Ha)<br>
+              • Net: Rp 10,56 M (33.0%)<br>
+              • Pemimpin Nasional
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom: Split 2 Columns (Left: Pro Forma & Economics | Right: 4 Sustainability Pillars) -->
+        <div class="grid-2" style="gap: 10px;">
+          <!-- Left Column: Pro Forma Income Statement Table & Unit Scale -->
+          <div class="card" style="padding: 9px 11px;">
+            <div class="card-title" style="font-size: 0.80rem; margin-bottom: 4px;">3-Year Pro Forma (Juta Rp) & Unit Scale</div>
+            <table class="deck-table" style="font-size: 0.68rem; margin-bottom: 5px;">
               <thead>
                 <tr>
-                  <th>Component (Million IDR)</th>
-                  <th>Yr 1 (2026)</th>
-                  <th>Yr 2 (2027)</th>
-                  <th>Yr 3 (2028)</th>
+                  <th style="padding: 4px 6px;">Pos Keuangan</th>
+                  <th style="padding: 4px 6px;">Yr 1 (2026)</th>
+                  <th style="padding: 4px 6px;">Yr 2 (2027)</th>
+                  <th style="padding: 4px 6px;">Yr 3 (2028)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr style="font-weight: bold;">
-                  <td>Gross Revenue</td>
-                  <td>Rp 1,100</td>
-                  <td>Rp 3,500</td>
-                  <td>Rp 9,800</td>
+                  <td style="padding: 3px 6px;">Gross Revenue</td>
+                  <td style="padding: 3px 6px;">Rp 1.100 Jt <span style="font-size:0.58rem; color:var(--text-muted); font-weight:normal;">(1,1 M)</span></td>
+                  <td style="padding: 3px 6px;">Rp 3.500 Jt <span style="font-size:0.58rem; color:var(--text-muted); font-weight:normal;">(3,5 M)</span></td>
+                  <td style="padding: 3px 6px;">Rp 9.800 Jt <span style="font-size:0.58rem; color:var(--text-muted); font-weight:normal;">(9,8 M)</span></td>
                 </tr>
                 <tr>
-                  <td>Cost of Goods Sold (COGS)</td>
-                  <td>(Rp 520)</td>
-                  <td>(Rp 1,575)</td>
-                  <td>(Rp 4,214)</td>
+                  <td style="padding: 3px 6px;">COGS (HPP)</td>
+                  <td style="padding: 3px 6px;">(Rp 520 Jt)</td>
+                  <td style="padding: 3px 6px;">(Rp 1.575 Jt)</td>
+                  <td style="padding: 3px 6px;">(Rp 4.214 Jt)</td>
                 </tr>
                 <tr class="verta-row">
-                  <td>Gross Profit</td>
-                  <td>Rp 580 (52.7%)</td>
-                  <td>Rp 1,925 (55.0%)</td>
-                  <td>Rp 5,586 (57.0%)</td>
+                  <td style="padding: 3px 6px;">Gross Profit</td>
+                  <td style="padding: 3px 6px;">Rp 580 Jt (52.7%)</td>
+                  <td style="padding: 3px 6px;">Rp 1.925 Jt (55.0%)</td>
+                  <td style="padding: 3px 6px;">Rp 5.586 Jt (57.0%)</td>
                 </tr>
                 <tr>
-                  <td>Operational Expenditure (OPEX)</td>
-                  <td>(Rp 450)</td>
-                  <td>(Rp 950)</td>
-                  <td>(Rp 2,100)</td>
+                  <td style="padding: 3px 6px;">OPEX</td>
+                  <td style="padding: 3px 6px;">(Rp 450 Jt)</td>
+                  <td style="padding: 3px 6px;">(Rp 950 Jt)</td>
+                  <td style="padding: 3px 6px;">(Rp 2.100 Jt)</td>
                 </tr>
                 <tr>
-                  <td>EBITDA</td>
-                  <td>Rp 130</td>
-                  <td>Rp 975</td>
-                  <td>Rp 3,486</td>
+                  <td style="padding: 3px 6px;">EBITDA</td>
+                  <td style="padding: 3px 6px;">Rp 130 Jt</td>
+                  <td style="padding: 3px 6px;">Rp 975 Jt</td>
+                  <td style="padding: 3px 6px;">Rp 3.486 Jt</td>
                 </tr>
                 <tr style="font-weight: bold; background: #F0F9F4;">
-                  <td>Net Profit</td>
-                  <td style="color: var(--primary);">Rp 102 (9.2%)</td>
-                  <td style="color: var(--primary);">Rp 780 (22.3%)</td>
-                  <td style="color: var(--primary);">Rp 2,789 (28.5%)</td>
+                  <td style="padding: 3px 6px;">Net Profit (Laba Bersih)</td>
+                  <td style="padding: 3px 6px; color: var(--primary);">Rp 102 Jt (9.2%)</td>
+                  <td style="padding: 3px 6px; color: var(--primary);">Rp 780 Jt (22.3%)</td>
+                  <td style="padding: 3px 6px; color: var(--primary);">Rp 2.789 Jt (28.5%)</td>
                 </tr>
               </tbody>
             </table>
-            <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 6px;">
-              <strong>BEP:</strong> Month 14 of operations | Operational Fixed Cost: Rp 240M / Year (~$15k/yr).
+            <!-- Mini Unit Economics Strip -->
+            <div style="background: #F7FAF8; border: 1px solid var(--border-color); border-radius: 6px; padding: 4px 7px; font-size: 0.63rem; line-height: 1.3; color: var(--text-muted);">
+              <strong>BEP:</strong> Bulan ke-14 (Fixed Cost: Rp 20 Jt/Bln) • <strong>HPP Scaling:</strong> Rp 18.000 → Rp 12.000 (-33%) • <strong>Gross Margin:</strong> 52.6% → 68.4% • <strong>LTV/CAC:</strong> >3.2x • <strong>B2B Renewal:</strong> >70%.
             </div>
           </div>
 
-          <!-- Unit Economics & Scale Card -->
-          <div class="card highlight">
-            <div class="card-title" style="margin-bottom: 6px;">Unit Economics & Scale Milestones</div>
-            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.76rem; color: var(--text-muted);">
-              <div style="background: #FFF; padding: 7px 10px; border-radius: 6px; border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                  <div style="font-size: 0.65rem; color: var(--text-muted); font-weight: bold;">HPP / COGS SCALING</div>
-                  <div style="font-size: 0.95rem; font-weight: 800; color: var(--primary);">Rp 18,000 → Rp 12,000</div>
-                </div>
-                <div style="font-size: 0.72rem; color: var(--accent); font-weight: 600;">-33% via Hydraulic Press</div>
+          <!-- Right Column: 4 Core Pillars of Sustainability -->
+          <div class="card highlight" style="padding: 9px 11px;">
+            <div class="card-title" style="font-size: 0.80rem; margin-bottom: 5px;">4 Pilar Keberlanjutan Usaha Jangka Panjang</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 0.64rem; line-height: 1.3;">
+              <div style="background: #FFF; border: 1px solid var(--border-color); border-radius: 6px; padding: 5px 7px;">
+                <div style="font-weight: bold; color: var(--primary); margin-bottom: 1px;">💵 1. Finansial</div>
+                <div>DP 50% di muka (negative working capital); retensi multi-tahun >75% via mandat POJK 51; 4 mesin kas terdiversifikasi.</div>
               </div>
-              <div style="background: #FFF; padding: 7px 10px; border-radius: 6px; border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                  <div style="font-size: 0.65rem; color: var(--text-muted); font-weight: bold;">GROSS MARGIN EXPANSION</div>
-                  <div style="font-size: 0.95rem; font-weight: 800; color: var(--mint);">52.6% → 68.4%</div>
-                </div>
-                <div style="font-size: 0.72rem; color: var(--primary); font-weight: 600;">At 180k Units / Year</div>
+              <div style="background: #FFF; border: 1px solid var(--border-color); border-radius: 6px; padding: 5px 7px;">
+                <div style="font-weight: bold; color: var(--secondary); margin-bottom: 1px;">⚙️ 2. Rantai Pasok</div>
+                <div>Pasokan sabut melimpah (kontrak eksklusif koperasi Ciamis & Cilacap); hub pres satelit pangkas logistik 40%; ISO 17088.</div>
               </div>
-              <div style="background: #F0F9F4; padding: 7px 10px; border-radius: 6px; border: 1px solid var(--mint);">
-                <div style="font-size: 0.68rem; color: var(--primary-dark); font-weight: bold; margin-bottom: 2px;">COMMERCIAL CASH-FLOW HEALTH</div>
-                <div style="font-size: 0.74rem; line-height: 1.4;">
-                  • <strong>LTV / CAC Ratio:</strong> > 3.2x with negative working capital cycle in Turnkey contracts.<br>
-                  • <strong>B2B Renewal Rate:</strong> > 70% driven by mandatory annual POJK 51 ESG compliance.
-                </div>
+              <div style="background: #FFF; border: 1px solid var(--border-color); border-radius: 6px; padding: 5px 7px;">
+                <div style="font-weight: bold; color: var(--mint); margin-bottom: 1px;">📈 3. Regulasi & Karbon</div>
+                <div>Mandat POJK 51 pada 900+ emiten IDX; wajib reklamasi PPKH DAS tambang; QR pohon siap terbit kredit IDXCarbon & SRN-PPI.</div>
+              </div>
+              <div style="background: #FFF; border: 1px solid var(--accent); border-radius: 6px; padding: 5px 7px;">
+                <div style="font-weight: bold; color: var(--accent); margin-bottom: 1px;">🌱 4. Sosial & Ekologis</div>
+                <div>1.200+ green jobs (*Forest Caretakers*) di 50 desa (+25%–40% income); benteng cegah karhutla; hemat air 70% & 150k tCO₂.</div>
               </div>
             </div>
-            <div style="margin-top: auto; display: flex; gap: 6px; padding-top: 6px;">
-              <span class="pill pill-mint">SDG 13: Climate</span>
-              <span class="pill pill-mint">SDG 15: Land</span>
-              <span class="pill pill-mint">SDG 8: Decent Work</span>
-              <span class="pill pill-mint">SDG 12: Responsible</span>
+            <div style="margin-top: auto; display: flex; gap: 4px; padding-top: 5px;">
+              <span class="pill pill-mint" style="font-size: 0.55rem; padding: 1px 6px;">SDG 13: Climate</span>
+              <span class="pill pill-mint" style="font-size: 0.55rem; padding: 1px 6px;">SDG 15: Land</span>
+              <span class="pill pill-mint" style="font-size: 0.55rem; padding: 1px 6px;">SDG 8: Decent Work</span>
+              <span class="pill pill-mint" style="font-size: 0.55rem; padding: 1px 6px;">SDG 12: Responsible</span>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -1072,8 +1295,8 @@
           </div>
           <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(82,183,136,0.3); border-radius: 8px; padding: 10px;">
             <div style="font-size: 0.62rem; text-transform: uppercase; color: var(--gold); font-weight: 800;">PROFIT (BUSINESS)</div>
-            <div style="font-size: 1.15rem; font-weight: 800; color: #FFF; margin: 2px 0;">Rp 9.8B ARR</div>
-            <div style="font-size: 0.68rem; color: #D8F3DC;">Yr 3 revenue with 28.5% net margin</div>
+            <div style="font-size: 1.15rem; font-weight: 800; color: #FFF; margin: 2px 0;">Rp 9,8 Miliar</div>
+            <div style="font-size: 0.68rem; color: #D8F3DC;">ARR Th-3 (Net Profit Rp 2,78 Miliar)</div>
           </div>
           <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(82,183,136,0.3); border-radius: 8px; padding: 10px;">
             <div style="font-size: 0.62rem; text-transform: uppercase; color: var(--mint-light); font-weight: 800;">PEOPLE (SOCIAL)</div>
@@ -1105,12 +1328,12 @@
           <div style="display: flex; flex-direction: column; gap: 10px;">
             <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(82,183,136,0.25); border-radius: 8px; padding: 12px 14px;">
               <div style="font-size: 0.88rem; font-weight: 800; color: var(--mint); margin-bottom: 4px;">
-                🚀 The Acceleration Ask: Rp 150,000,000 (~$10,000)
+                🚀 The Acceleration Ask: Rp 150.000.000 (~$10,000)
               </div>
               <div style="font-size: 0.73rem; color: #D8F3DC; line-height: 1.35;">
-                • <strong>40% (Rp 60M):</strong> Commercial pilot of 2,000 units with anchor enterprise B2B partners.<br>
-                • <strong>35% (Rp 52.5M):</strong> Semi-automated hydraulic press mold fabrication (lowers COGS to Rp 12,000).<br>
-                • <strong>25% (Rp 37.5M):</strong> ISO biodegradation laboratory certification & software optimization.
+                • <strong>40% (Rp 60.000.000 / Rp 60 Juta):</strong> Commercial pilot of 2,000 units with anchor enterprise B2B partners.<br>
+                • <strong>35% (Rp 52.500.000 / Rp 52,5 Juta):</strong> Semi-automated hydraulic press mold fabrication (lowers COGS to Rp 12.000).<br>
+                • <strong>25% (Rp 37.500.000 / Rp 37,5 Juta):</strong> ISO biodegradation laboratory certification & software optimization.
               </div>
             </div>
 
@@ -1140,6 +1363,7 @@
     <button class="nav-btn" id="overview-btn" title="Toggle Slide Overview (O)">🗂️</button>
     <button class="nav-btn" id="fullscreen-btn" title="Toggle Fullscreen (F)">⛶</button>
     <button class="nav-btn" id="print-btn" title="Print / Export to PDF (Ctrl+P)" onclick="window.print()">🖨️</button>
+    <button class="nav-btn" id="copy-btn" title="Salin Seluruh Teks Slide Ini (Copy to Clipboard)" onclick="copySlideText()">📋</button>
   </div>
 
   <!-- OVERVIEW DRAWER MODAL -->
@@ -1170,13 +1394,13 @@
     const slideTitles = [
       "1. [Intro] Cover & Venture Overview",
       "2. [Intro] 3 Core Reforestation Crises",
-      "3. [Analysis] Competitive Gap Matrix",
-      "4. [Analysis] Market Sizing & PESTLE",
-      "5. [Strategy] Solution & UVP Pillars",
-      "6. [Strategy] Business Model & Moats",
-      "7. [Implementation] Biocomposite & Tech",
-      "8. [Implementation] Channels & Roadmap",
-      "9. [Conclusion] Financials & BEP Model",
+      "3. [Analysis] Competition & Market Sizing",
+      "4. [Strategy] Solution & UVP Pillars",
+      "5. [Strategy] Business Model & Moats",
+      "6. [Implementation] Biocomposite & Tech",
+      "7. [Implementation] Channels & Roadmap",
+      "8. [Implementation] KPIs & Quantitative Metrics",
+      "9. [Conclusion] Financials & 5-Year Sustainability",
       "10. [Conclusion] Impact, Risks & The Ask"
     ];
 
@@ -1284,6 +1508,55 @@
     }
 
     fullscreenBtn.onclick = toggleFullscreen;
+
+    function copySlideText() {
+      const activeSlide = document.querySelector('.slide.active');
+      if (!activeSlide) return;
+      
+      const textToCopy = activeSlide.innerText.trim();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          showCopyToast('Teks slide berhasil disalin!');
+        }).catch(() => {
+          fallbackCopyText(textToCopy);
+        });
+      } else {
+        fallbackCopyText(textToCopy);
+      }
+    }
+
+    function fallbackCopyText(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showCopyToast('Teks slide berhasil disalin!');
+      } catch (err) {
+        showCopyToast('Gagal menyalin otomatis. Silakan blok dan tekan Ctrl+C.');
+      }
+      document.body.removeChild(textarea);
+    }
+
+    function showCopyToast(msg) {
+      let toast = document.getElementById('copy-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'copy-toast';
+        toast.style.cssText = 'position:fixed; top:24px; right:24px; background:rgba(15,45,31,0.95); color:#D8F3DC; border:1px solid #52B788; padding:10px 18px; border-radius:8px; font-weight:700; font-size:0.85rem; z-index:99999; box-shadow:0 10px 30px rgba(0,0,0,0.5); transition:all 0.3s cubic-bezier(0.16,1,0.3,1); pointer-events:none; display:flex; align-items:center; gap:8px;';
+        document.body.appendChild(toast);
+      }
+      toast.innerHTML = `<span style="font-size:1.1rem;">📋</span> <span>${msg}</span>`;
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateY(0)';
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(-10px)';
+      }, 2500);
+    }
 
     // Initial load
     updateSlide();
